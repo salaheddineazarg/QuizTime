@@ -10,12 +10,13 @@ import lombok.NoArgsConstructor;
 @Data
 public class Validation {
 
-    @Id
+    @EmbeddedId
+    private ValidationId validationID;
+
     @ManyToOne
     @JoinColumn(name = "Response_id")
     private Response response;
 
-    @Id
     @ManyToOne
     @JoinColumn(name = "Question_id")
     private Question question;

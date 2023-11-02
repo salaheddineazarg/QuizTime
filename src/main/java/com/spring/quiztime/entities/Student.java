@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Data
@@ -21,5 +22,8 @@ public class Student extends User{
 
     @Temporal(TemporalType.DATE)
     private LocalDate registrationDate;
+
+    @OneToMany(mappedBy = "student")
+    private List<AssignQuizStudent> assignQuizStudents;
 
 }

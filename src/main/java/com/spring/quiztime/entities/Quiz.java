@@ -32,11 +32,6 @@ public class Quiz {
     private String moreInformations;
 
 
-    @OneToMany(mappedBy = "student")
-    private List<AssignQuizStudent> assignQuizStudents;
-
-
-
     @OneToMany(mappedBy = "quiz")
     private List<QuizQuestion> quizQuestions;
 

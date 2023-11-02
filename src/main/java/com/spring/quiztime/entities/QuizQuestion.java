@@ -11,17 +11,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class QuizQuestion {
 
+   @EmbeddedId
+    private QuizQuestionId quizQuestionId;
 
     @Column(nullable = false)
     private int temporization;
 
 
-    @Id
+
     @ManyToOne
     @JoinColumn(name = "quiz_id")
     private Quiz quiz;
 
-    @Id
+
     @ManyToOne
     @JoinColumn(name = "question_id")
     private Question question;
