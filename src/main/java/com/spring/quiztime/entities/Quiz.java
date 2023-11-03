@@ -34,8 +34,8 @@ public class Quiz {
     private String moreInformations;
 
 
-    /*@OneToMany(mappedBy = "quiz")
-    private List<QuizQuestion> quizQuestions;*/
+    @OneToMany(mappedBy = "quiz")
+    private List<QuizQuestion> quizQuestions;
 
 
 

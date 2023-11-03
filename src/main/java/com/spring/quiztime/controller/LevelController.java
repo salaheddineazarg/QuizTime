@@ -4,9 +4,10 @@ package com.spring.quiztime.controller;
 import com.spring.quiztime.entities.Level;
 import com.spring.quiztime.service.LevelService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+
 
 import java.util.List;
 import java.util.Optional;
