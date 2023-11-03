@@ -30,15 +30,13 @@ public class AssignQuizStudent {
     @Column(nullable = true)
     private String result;
 
-    @Column(columnDefinition = "first time",length = 255)
+    @Column(length = 255)
     private String reason;
 
     @ManyToOne
-    @JoinColumn(name = "quiz_id")
     private Quiz quiz;
 
     @ManyToOne
-    @JoinColumn(name = "student_id")
     private Student student;
 
 

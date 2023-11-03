@@ -1,3 +1,4 @@
+/*
 package com.spring.quiztime.entities;
 
 import jakarta.persistence.Embeddable;
@@ -10,11 +11,7 @@ import java.io.Serializable;
 
 @Embeddable
 public class QuizQuestionId implements Serializable {
-
-
-
     private Quiz quiz;
-
-
     private Question question;
 }
+*/

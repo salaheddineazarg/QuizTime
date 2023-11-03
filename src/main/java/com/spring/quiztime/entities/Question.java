@@ -1,41 +1,41 @@
 package com.spring.quiztime.entities;
-
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+    @Entity
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public class Question {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
 
-@Data
-@NoArgsConstructor
-@Entity
-public class Question {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+        @Column(nullable = false)
+        private String text;
 
-    @Column(name = "text")
-    private String text;
+        @Enumerated(EnumType.STRING)
+        private QuestionType questionType;
 
-    @Enumerated(EnumType.STRING)
-    private QuestionType questionType;
+        @Column(nullable = false)
+        private int  numberAnswers;
 
-    @Column(name = "numberAnswers")
-    private int  numberAnswers;
+        @Column(nullable = false )
+        private int numberCorrectAnswers;
 
-    @Column(name = "numberCorrectAnswers" )
-    private int numberCorrectAnswers;
+        @Column(nullable = false)
+        private int numberFalseAnswers;
 
-    @Column(name ="numberFalseAnswers")
-    private int numberFalseAnswers;
-
-    @ManyToOne
-    @JoinColumn(name = "level_id")
-    private Level level;
+        @ManyToOne
+        private Level level;
 
 
-    @OneToMany(mappedBy = "question",fetch = FetchType.LAZY)
-    private List<Media> medias;
+        @OneToMany(mappedBy = "question",fetch = FetchType.LAZY)
+        private List<Media> medias;
+
 
 
 

@@ -10,7 +10,6 @@ public class ValidationId implements Serializable {
 
     private Response response;
 
-
     private Question question;
 
 }

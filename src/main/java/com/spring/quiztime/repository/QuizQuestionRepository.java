@@ -1,3 +1,4 @@
+/*
 package com.spring.quiztime.repository;
 
 import com.spring.quiztime.entities.QuizQuestion;
@@ -8,3 +9,4 @@ public interface QuizQuestionRepository extends JpaRepository<QuizQuestion, Quiz
 
 
 }
+*/

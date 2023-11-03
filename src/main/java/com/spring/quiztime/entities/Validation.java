@@ -1,6 +1,7 @@
 package com.spring.quiztime.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,17 +9,16 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @Data
+@AllArgsConstructor
 public class Validation {
 
-    @EmbeddedId
-    private ValidationId validationID;
 
+    @Id
     @ManyToOne
-    @JoinColumn(name = "Response_id")
     private Response response;
 
+    @Id
     @ManyToOne
-    @JoinColumn(name = "Question_id")
     private Question question;
 
     private double points;

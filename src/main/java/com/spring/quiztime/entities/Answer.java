@@ -2,12 +2,14 @@ package com.spring.quiztime.entities;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Answer {
 
     @Id
@@ -15,17 +17,13 @@ public class Answer {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "response_id")
-    private Response response;
-
-    @ManyToOne
-    @JoinColumn(name = "question_id")
     private Question question;
 
+    @ManyToOne
+    private Quiz quiz;
 
     @ManyToOne
-    @JoinColumn(name = "quiz_id")
-    private Quiz quiz;
+    private Student student;
 
     @Column(nullable = false)
     private double totalScore;

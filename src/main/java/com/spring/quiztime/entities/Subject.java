@@ -19,7 +19,6 @@ public class Subject {
     private String title;
 
     @ManyToOne
-    @JoinColumn(name = "id_parent")
     private Subject parent;
 
     @OneToMany(mappedBy = "parent")
