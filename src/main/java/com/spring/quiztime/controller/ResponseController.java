@@ -47,7 +47,7 @@ public class ResponseController {
         return ResponseEntity.ok("Response deleted successfully!.");
     }
 
-    @GetMapping("/getLevel/{id}")
+    @GetMapping("/getResponse/{id}")
     public ResponseEntity<Optional<Response>> getById(@PathVariable("id") Long id) {
 
         return ResponseEntity.ok(responseService.findByIdService(id));
