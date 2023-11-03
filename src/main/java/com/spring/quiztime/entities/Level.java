@@ -17,17 +17,18 @@ public class Level {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(length = 50)
     private String name;
 
-    @Column()
+    @Column
     private int maxPoints;
 
-
+    @Column
     private int minPoints;
-/*
+
     @OneToMany (fetch = FetchType.LAZY,mappedBy = "level")
-    private List<Question> questions;*/
+    private List<Question> questions;
 
 
 }
