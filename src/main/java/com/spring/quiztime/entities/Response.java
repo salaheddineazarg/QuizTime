@@ -20,6 +20,6 @@ public class Response {
     @Column(nullable = false)
     private String text;
 
-    /*@OneToMany(fetch = FetchType.LAZY, mappedBy = "response")
-    private List<Validation> validations;*/
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "response")
+    private List<Validation> validations;
 }

@@ -6,10 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-@Entity
+
 @NoArgsConstructor
 @Data
 @AllArgsConstructor
+@Entity
 public class Validation {
 
 

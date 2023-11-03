@@ -12,8 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class QuizQuestion {
 
-    /*@EmbeddedId
-    private QuizQuestionId quizQuestionId;*/
+
 
     @Column(nullable = false)
     private int temporization;
