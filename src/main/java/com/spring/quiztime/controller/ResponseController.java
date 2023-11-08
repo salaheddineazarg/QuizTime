@@ -1,7 +1,7 @@
 package com.spring.quiztime.controller;
 
 
-import com.spring.quiztime.entities.Level;
+
 import com.spring.quiztime.entities.Response;
 import com.spring.quiztime.service.ResponseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api/response")
@@ -62,6 +62,6 @@ public class ResponseController {
 
         return responseService.findByIdService(id)
                 .map(OneResponse -> new ResponseEntity<>(OneResponse,HttpStatus.OK))
-                .orElse(new ResponseEntity<>(null,HttpStatus.CONFLICT));
+                .orElse(new ResponseEntity<>(null,HttpStatus.NOT_FOUND));
     }
 }

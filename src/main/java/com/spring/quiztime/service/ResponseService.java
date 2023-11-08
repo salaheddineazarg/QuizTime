@@ -1,6 +1,6 @@
 package com.spring.quiztime.service;
 
-import com.spring.quiztime.entities.Level;
+
 import com.spring.quiztime.entities.Response;
 import com.spring.quiztime.repository.ResponseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
