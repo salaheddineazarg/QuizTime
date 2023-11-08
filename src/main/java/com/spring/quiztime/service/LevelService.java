@@ -22,20 +22,24 @@ public class LevelService {
         return levelRepository.findAll();
     }
 
-    public Level saveService(Level level){
+    public Optional<Level> saveService(Level level){
 
-      return levelRepository.save(level);
+      return Optional.of(levelRepository.save(level));
     }
 
-    public void deleteService(Long id){
+    public boolean deleteService(Long id){
 
-        levelRepository.deleteById(id);
+        if(levelRepository.findById(id).isPresent()){
+            levelRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 
-    public Level updateService(Level level,Long id){
+    public Optional<Level> updateService(Level level,Long id){
         if(levelRepository.findById(id).isPresent()){
             level.setId(id);
-            return levelRepository.save(level);
+            return Optional.of(levelRepository.save(level));
         }
         return null;
     }
