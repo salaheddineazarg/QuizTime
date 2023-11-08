@@ -5,6 +5,7 @@ import com.spring.quiztime.entities.Level;
 import com.spring.quiztime.entities.Response;
 import com.spring.quiztime.service.ResponseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,35 +22,46 @@ public class ResponseController {
 
 
     @GetMapping
-    public  List<Response> getAll(){
+    public  ResponseEntity<List<Response>> getAll(){
 
-        return responseService.getAllService();
+        return new ResponseEntity<>(responseService.getAllService(), HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<Response> save(@RequestBody Response response){
 
 
-        return ResponseEntity.ok(responseService.saveService(response));
+        return responseService.saveService(response)
+                .map(savedRespone -> new ResponseEntity<>(savedRespone,HttpStatus.CREATED))
+                .orElse(new ResponseEntity<>(null,HttpStatus.OK));
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Response> update(@RequestBody Response response,@PathVariable("id") Long id){
 
-        return ResponseEntity.ok(responseService.updateService(response,id));
+
+        return responseService.updateService(response,id)
+                .map(updatedRespone -> new ResponseEntity<>(updatedRespone,HttpStatus.CREATED))
+                .orElse(new ResponseEntity<>(null,HttpStatus.OK));
+
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<String> delete(@PathVariable("id") Long id){
 
-        responseService.deleteService(id);
+        if (responseService.deleteService(id)){
 
-        return ResponseEntity.ok("Response deleted successfully!.");
+            return new ResponseEntity<>("Response is deleted successfully!.",HttpStatus.OK);
+        };
+
+        return new ResponseEntity<>("Response is doesn't delete !.",HttpStatus.NOT_FOUND) ;
     }
 
     @GetMapping("/getResponse/{id}")
-    public ResponseEntity<Optional<Response>> getById(@PathVariable("id") Long id) {
+    public ResponseEntity<Response> getById(@PathVariable("id") Long id) {
 
-        return ResponseEntity.ok(responseService.findByIdService(id));
+        return responseService.findByIdService(id)
+                .map(OneResponse -> new ResponseEntity<>(OneResponse,HttpStatus.OK))
+                .orElse(new ResponseEntity<>(null,HttpStatus.CONFLICT));
     }
 }

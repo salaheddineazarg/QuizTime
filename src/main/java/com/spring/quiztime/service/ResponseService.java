@@ -22,20 +22,23 @@ public class ResponseService {
         return responseRepository.findAll();
     }
 
-    public Response saveService(Response response){
+    public Optional<Response> saveService(Response response){
 
-        return responseRepository.save(response);
+        return Optional.of(responseRepository.save(response));
     }
 
-    public void deleteService(Long id){
-
+    public boolean deleteService(Long id){
+        if(responseRepository.findById(id).isPresent()){
         responseRepository.deleteById(id);
+        return true;
+        }
+        return false;
     }
 
-    public Response updateService(Response response,Long id){
+    public Optional<Response> updateService(Response response,Long id){
         if(responseRepository.findById(id).isPresent()){
             response.setId(id);
-            return responseRepository.save(response);
+            return Optional.of(responseRepository.save(response));
         }
         return null;
     }
