@@ -36,8 +36,8 @@ import java.util.List;
         @OneToMany(mappedBy = "question",fetch = FetchType.LAZY)
         private List<Media> medias;
 
-
-
+        @ManyToOne
+        private Subject subject;
 
 
 }
