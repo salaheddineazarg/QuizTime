@@ -1,26 +1,38 @@
 package com.spring.quiztime.entities;
 
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 import java.util.List;
 
-@Entity
-@NoArgsConstructor
 @Data
-public class Subject {
+@NoArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@Entity
+public class Subject  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false,length = 255)
+    @Column(nullable = false)
     private String title;
 
     @ManyToOne
     private Subject parent;
 
-    @OneToMany(mappedBy = "parent")
+
+
+    @OneToMany(mappedBy = "parent",fetch = FetchType.LAZY)
     private List<Subject> childs;
+
+
+    @OneToMany(mappedBy = "subject",fetch = FetchType.LAZY)
+    private List<Question> question ;
 }
