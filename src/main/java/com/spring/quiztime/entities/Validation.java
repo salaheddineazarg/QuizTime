@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 
 
 @NoArgsConstructor
@@ -12,16 +13,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class Validation {
-
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @ManyToOne
     private Response response;
 
-    @Id
     @ManyToOne
     private Question question;
 
+    @Column(nullable = false)
     private double points;
+
+    @OneToMany(mappedBy = "validation")
+     private List<Answer> answers ;
 
 }

@@ -1,12 +1,15 @@
 package com.spring.quiztime.service;
 
 
+import com.spring.quiztime.dto.LevelDTO;
 import com.spring.quiztime.entities.Level;
 import com.spring.quiztime.repository.LevelRepository;
 import com.spring.quiztime.service.interfaces.ILevelService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,37 +20,43 @@ public class LevelService implements ILevelService {
     @Autowired
     private LevelRepository levelRepository;
 
-    @Override
-    public List<Level> getAllService(){
+    @Autowired
+    private ModelMapper modelMapper;
 
-        return levelRepository.findAll();
+    @Override
+    public List<LevelDTO> getAllService(){
+
+        return Arrays.asList(modelMapper.map(levelRepository.findAll(),LevelDTO[].class));
     }
     @Override
-    public Optional<Level> saveService(Level level){
+    public Optional<LevelDTO> saveService(LevelDTO levelDTO){
+        Level level = modelMapper.map(levelDTO, Level.class);
 
-      return Optional.of(levelRepository.save(level));
+        return  Optional.of(modelMapper.map(levelRepository.save(level),LevelDTO.class));
+
     }
     @Override
-    public boolean deleteService(Long id){
+    public boolean deleteService(Long Id){
 
-        if(levelRepository.findById(id).isPresent()){
-            levelRepository.deleteById(id);
+        if(levelRepository.findById(Id).isPresent()){
+            levelRepository.deleteById(Id);
             return true;
         }
         return false;
     }
     @Override
-    public Optional<Level> updateService(Level level,Long id){
-        if(levelRepository.findById(id).isPresent()){
-            level.setId(id);
-            return Optional.of(levelRepository.save(level));
+    public Optional<LevelDTO> updateService(LevelDTO levelDTO,Long Id){
+        if(levelRepository.findById(Id).isPresent()){
+            Level level = modelMapper.map(levelDTO, Level.class);
+              level.setId(Id);
+           return Optional.of(modelMapper.map(levelRepository.save(level),LevelDTO.class));
         }
         return null;
     }
     @Override
-    public Optional<Level> findByIdService(Long id){
+    public Optional<LevelDTO> findByIdService(Long Id){
 
-    return levelRepository.findById(id);
+    return Optional.of(modelMapper.map(levelRepository.findById(Id),LevelDTO.class));
     }
 
 

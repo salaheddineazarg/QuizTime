@@ -1,12 +1,15 @@
 package com.spring.quiztime.service;
 
 
+import com.spring.quiztime.dto.ResponseDTO;
 import com.spring.quiztime.entities.Response;
 import com.spring.quiztime.repository.ResponseRepository;
 import com.spring.quiztime.service.interfaces.IResponseService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,42 +18,46 @@ public class ResponseService implements IResponseService {
 
     @Autowired
     private ResponseRepository responseRepository;
-
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Override
-    public List<Response> getAllService() {
+    public List<ResponseDTO> getAllService(){
 
-        return responseRepository.findAll();
+        return  Arrays.asList(modelMapper.map(responseRepository.findAll(),ResponseDTO[].class));
     }
 
     @Override
-    public Optional<Response> saveService(Response response) {
-
-        return Optional.of(responseRepository.save(response));
+    public Optional<ResponseDTO> saveService(ResponseDTO responseDTO) {
+        Response response = modelMapper.map(responseDTO,Response.class);
+        return  Optional.ofNullable(modelMapper.map(responseRepository.save(response),ResponseDTO.class));
     }
 
     @Override
-    public boolean deleteService(Long id) {
-        if (responseRepository.findById(id).isPresent()) {
-            responseRepository.deleteById(id);
+    public boolean deleteService(Long Id) {
+        if(responseRepository.findById(Id).isPresent()){
+
+            responseRepository.deleteById(Id);
+
             return true;
         }
         return false;
     }
 
     @Override
-    public Optional<Response> updateService(Response response, Long id) {
-        if (responseRepository.findById(id).isPresent()) {
-            response.setId(id);
-            return Optional.of(responseRepository.save(response));
+    public Optional<ResponseDTO> updateService(ResponseDTO responseDTO, Long Id) {
+        if (responseRepository.findById(Id).isPresent()){
+            Response response = modelMapper.map(responseDTO,Response.class);
+            response.setId(Id);
+            return  Optional.ofNullable(modelMapper.map(responseRepository.save(response),ResponseDTO.class));
         }
-        return null;
+        return Optional.empty();
     }
 
     @Override
-    public Optional<Response> findByIdService(Long id) {
+    public Optional<ResponseDTO> findByIdService(Long Id) {
+        Response response = responseRepository.findById(Id).get();
 
-        return responseRepository.findById(id);
+        return Optional.of(modelMapper.map(response,ResponseDTO.class));
     }
-
 }

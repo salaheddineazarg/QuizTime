@@ -32,12 +32,13 @@ import java.util.List;
         @ManyToOne
         private Level level;
 
-
         @OneToMany(mappedBy = "question",fetch = FetchType.LAZY)
         private List<Media> medias;
 
         @ManyToOne
         private Subject subject;
 
+        @OneToMany(mappedBy = "question")
+        private List<Validation> validations;
 
 }

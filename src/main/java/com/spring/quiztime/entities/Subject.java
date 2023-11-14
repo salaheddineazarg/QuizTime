@@ -13,7 +13,6 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Entity
 public class Subject  {
 
@@ -26,8 +25,6 @@ public class Subject  {
 
     @ManyToOne
     private Subject parent;
-
-
 
     @OneToMany(mappedBy = "parent",fetch = FetchType.LAZY)
     private List<Subject> childs;

@@ -1,4 +1,4 @@
-package com.spring.quiztime.entities;
+package com.spring.quiztime.dto;
 
 
 import jakarta.persistence.*;
@@ -6,33 +6,31 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 
-@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Answer {
+public class AnswerDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    private Question question;
+    private QuestionDTO question;
 
     @ManyToOne
-    private Quiz quiz;
+    private QuizDTO quiz;
 
     @ManyToOne
-    private Student student;
+    private StudentDTO student;
 
     @Column(nullable = false)
     private double totalScore;
 
     @ManyToOne
-    private Validation validation;
+    private ValidationDTO validation;
 
     @ManyToOne
-    private AssignQuizStudent assignQuizStudent;
+    private AssignQuizStudentDTO assignQuizStudent;
 }

@@ -6,10 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
-@Entity
+
 @Data
 @NoArgsConstructor
+@Entity
 public class AssignQuizStudent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,5 +41,6 @@ public class AssignQuizStudent {
     @ManyToOne
     private Student student;
 
-
+    @OneToMany(mappedBy = "assignQuizStudent")
+    private List<Answer> answer;
 }

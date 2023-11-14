@@ -7,21 +7,22 @@ import lombok.NoArgsConstructor;
 
 
 @Data
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class QuizQuestion {
 
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false)
     private int temporization;
 
-    @Id
     @ManyToOne
     private Quiz quiz;
 
-    @Id
     @ManyToOne
     private Question question;
 }
