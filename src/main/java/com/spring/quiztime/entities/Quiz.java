@@ -18,13 +18,16 @@ public class Quiz {
     private Long id;
 
     @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false)
     private double passingScore;
 
     @Column(nullable = false)
     private int chances;
 
-    @Temporal(TemporalType.TIME)
-    private LocalTime during;
+    @Column(nullable = false)
+    private int during;
 
 
     @Column(nullable = false)
