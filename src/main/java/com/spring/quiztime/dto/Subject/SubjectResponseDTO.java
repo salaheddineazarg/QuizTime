@@ -1,8 +1,10 @@
-package com.spring.quiztime.dto;
+package com.spring.quiztime.dto.Subject;
 
 
 
 
+import com.spring.quiztime.dto.Question.QuestionDTO;
+import com.spring.quiztime.dto.Question.QuestionResponseDTO;
 import lombok.*;
 
 import java.util.List;

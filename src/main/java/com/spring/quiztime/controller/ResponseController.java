@@ -3,7 +3,6 @@ package com.spring.quiztime.controller;
 
 
 import com.spring.quiztime.dto.ResponseDTO;
-import com.spring.quiztime.entities.Response;
 import com.spring.quiztime.service.ResponseService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/v2/response")
+@RequestMapping("/api/response")
 public class ResponseController {
 
     @Autowired
@@ -39,7 +38,7 @@ public class ResponseController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<ResponseDTO> update(@RequestBody ResponseDTO response,@PathVariable Long id){
+    public ResponseEntity<ResponseDTO> update(@Valid @RequestBody ResponseDTO response,@PathVariable Long id){
 
 
         return responseService.updateService(response,id)

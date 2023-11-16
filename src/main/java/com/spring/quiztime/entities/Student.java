@@ -11,10 +11,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 
-@Entity
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class Student extends User{
 
     @Id
@@ -24,7 +25,7 @@ public class Student extends User{
     @Temporal(TemporalType.DATE)
     private LocalDate registrationDate;
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student",fetch = FetchType.LAZY)
     private List<AssignQuizStudent> assignQuizStudents;
 
 }

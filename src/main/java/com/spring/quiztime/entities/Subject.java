@@ -31,5 +31,5 @@ public class Subject  {
 
 
     @OneToMany(mappedBy = "subject",fetch = FetchType.LAZY)
-    private List<Question> question ;
+    private List<Question> questions ;
 }

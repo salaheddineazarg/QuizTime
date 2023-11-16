@@ -18,7 +18,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/api/v2/level")
+@RequestMapping("/api/level")
 public class LevelController {
 
 
@@ -32,7 +32,7 @@ public class LevelController {
     }
 
     @PostMapping
-    public ResponseEntity<LevelDTO> save(@Validated  @RequestBody LevelDTO level)   {
+    public ResponseEntity<LevelDTO> save(@Valid  @RequestBody LevelDTO level)   {
         return levelService.saveService(level)
                 .map(savedLevel -> new ResponseEntity<>(savedLevel, HttpStatus.CREATED))
                 .orElse(new ResponseEntity<>(null, HttpStatus.OK));
@@ -40,7 +40,7 @@ public class LevelController {
 
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<LevelDTO> update(@Validated @RequestBody LevelDTO level, @PathVariable Long id){
+    public ResponseEntity<LevelDTO> update(@Valid @RequestBody LevelDTO level, @PathVariable Long id){
         return levelService.updateService(level,id)
                 .map(updatedLevel -> new ResponseEntity<>(updatedLevel, HttpStatus.CREATED))
                 .orElse(new ResponseEntity<>(null, HttpStatus.OK));

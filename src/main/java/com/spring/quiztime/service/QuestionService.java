@@ -1,8 +1,8 @@
 package com.spring.quiztime.service;
 
 
-import com.spring.quiztime.dto.QuestionDTO;
-import com.spring.quiztime.dto.QuestionResponseDTO;
+import com.spring.quiztime.dto.Question.QuestionDTO;
+import com.spring.quiztime.dto.Question.QuestionResponseDTO;
 import com.spring.quiztime.entities.Question;
 import com.spring.quiztime.repository.LevelRepository;
 import com.spring.quiztime.repository.QuestionRepository;
@@ -35,7 +35,8 @@ public class QuestionService implements IQuestionService {
     @Override
     public List<QuestionResponseDTO> getAllService() {
 
-        return Arrays.asList(modelMapper.map(questionRepository.findAll(),QuestionResponseDTO[].class));
+        return Arrays.asList(modelMapper.map(questionRepository.findAll(),QuestionResponseDTO[].
+                class));
     }
 
     @Override
@@ -69,7 +70,7 @@ public class QuestionService implements IQuestionService {
 
     @Override
     public boolean deleteService(Long Id) {
-        if(questionRepository.findById(Id).isPresent()){
+        if(questionRepository.existsById(Id)){
             levelRepository.deleteById(Id);
         }
         return false;
@@ -78,7 +79,7 @@ public class QuestionService implements IQuestionService {
     @Override
     public Optional<QuestionResponseDTO> updateService(QuestionDTO questionDTO, Long Id) {
 
-         if (levelRepository.findById(Id).isPresent()){
+         if (levelRepository.existsById(Id)){
              int numberAnswers = questionDTO.getNumberAnswers();
              int trueAnswers =questionDTO.getNumberCorrectAnswers();
              int falseAnswers = questionDTO.getNumberFalseAnswers();

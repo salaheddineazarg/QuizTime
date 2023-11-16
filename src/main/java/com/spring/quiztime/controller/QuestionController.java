@@ -1,9 +1,8 @@
 package com.spring.quiztime.controller;
 
 
-import com.spring.quiztime.dto.QuestionDTO;
-import com.spring.quiztime.dto.QuestionResponseDTO;
-import com.spring.quiztime.entities.Question;
+import com.spring.quiztime.dto.Question.QuestionDTO;
+import com.spring.quiztime.dto.Question.QuestionResponseDTO;
 import com.spring.quiztime.service.QuestionService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v2/question")
+@RequestMapping("/api/question")
 public class QuestionController {
 
 
@@ -38,7 +37,7 @@ public class QuestionController {
     }
 
     @PutMapping("update/{id}")
-    public ResponseEntity<QuestionResponseDTO> update(@RequestBody QuestionDTO question,@PathVariable Long id){
+    public ResponseEntity<QuestionResponseDTO> update(@Valid @RequestBody QuestionDTO question,@PathVariable Long id){
 
         return questionService.updateService(question,id)
                 .map(upadedQuestion -> new ResponseEntity<>(upadedQuestion,HttpStatus.CREATED))

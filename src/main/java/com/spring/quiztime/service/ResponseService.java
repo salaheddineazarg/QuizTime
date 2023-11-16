@@ -35,7 +35,7 @@ public class ResponseService implements IResponseService {
 
     @Override
     public boolean deleteService(Long Id) {
-        if(responseRepository.findById(Id).isPresent()){
+        if(responseRepository.existsById(Id)){
 
             responseRepository.deleteById(Id);
 
@@ -46,7 +46,7 @@ public class ResponseService implements IResponseService {
 
     @Override
     public Optional<ResponseDTO> updateService(ResponseDTO responseDTO, Long Id) {
-        if (responseRepository.findById(Id).isPresent()){
+        if (responseRepository.existsById(Id)){
             Response response = modelMapper.map(responseDTO,Response.class);
             response.setId(Id);
             return  Optional.ofNullable(modelMapper.map(responseRepository.save(response),ResponseDTO.class));

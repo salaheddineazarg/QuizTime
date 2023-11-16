@@ -1,6 +1,7 @@
 package com.spring.quiztime.dto;
 
 
+import com.spring.quiztime.dto.Question.QuestionDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

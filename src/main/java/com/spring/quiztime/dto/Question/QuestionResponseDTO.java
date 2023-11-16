@@ -1,10 +1,14 @@
-package com.spring.quiztime.dto;
+package com.spring.quiztime.dto.Question;
 
-import com.spring.quiztime.entities.Level;
+import com.spring.quiztime.dto.LevelDTO;
+import com.spring.quiztime.dto.MediaDTO;
+import com.spring.quiztime.dto.Subject.SubjectDTO;
+import com.spring.quiztime.entities.QuestionType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 
 
 @Data
@@ -17,8 +21,10 @@ public class QuestionResponseDTO {
     private int  numberAnswers;
     private int numberCorrectAnswers;
     private int numberFalseAnswers;
+    private double points;
     private LevelDTO level;
     private SubjectDTO Subject;
+
 
 
 }

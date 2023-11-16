@@ -9,10 +9,11 @@ import org.hibernate.annotations.Fetch;
 
 import java.util.List;
 
-@Entity
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class Level {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

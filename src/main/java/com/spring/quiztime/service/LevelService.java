@@ -31,14 +31,15 @@ public class LevelService implements ILevelService {
     @Override
     public Optional<LevelDTO> saveService(LevelDTO levelDTO){
         Level level = modelMapper.map(levelDTO, Level.class);
+        level = levelRepository.save(level);
 
-        return  Optional.of(modelMapper.map(levelRepository.save(level),LevelDTO.class));
+        return  Optional.of(modelMapper.map(level,LevelDTO.class));
 
     }
     @Override
     public boolean deleteService(Long Id){
 
-        if(levelRepository.findById(Id).isPresent()){
+        if(levelRepository.existsById(Id)){
             levelRepository.deleteById(Id);
             return true;
         }
@@ -46,7 +47,7 @@ public class LevelService implements ILevelService {
     }
     @Override
     public Optional<LevelDTO> updateService(LevelDTO levelDTO,Long Id){
-        if(levelRepository.findById(Id).isPresent()){
+        if(levelRepository.existsById(Id)){
             Level level = modelMapper.map(levelDTO, Level.class);
               level.setId(Id);
            return Optional.of(modelMapper.map(levelRepository.save(level),LevelDTO.class));
@@ -56,7 +57,9 @@ public class LevelService implements ILevelService {
     @Override
     public Optional<LevelDTO> findByIdService(Long Id){
 
-    return Optional.of(modelMapper.map(levelRepository.findById(Id),LevelDTO.class));
+       LevelDTO levelDTO =  modelMapper.map(levelRepository.findById(Id),LevelDTO.class);
+        levelDTO.setQuestions(levelDTO.getQuestions());
+    return Optional.of(levelDTO);
     }
 
 

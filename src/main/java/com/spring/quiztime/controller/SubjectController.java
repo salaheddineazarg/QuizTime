@@ -1,9 +1,9 @@
 package com.spring.quiztime.controller;
 
-import com.spring.quiztime.dto.SubjectDTO;
-import com.spring.quiztime.dto.SubjectResponseDTO;
-import com.spring.quiztime.entities.Subject;
+import com.spring.quiztime.dto.Subject.SubjectDTO;
+import com.spring.quiztime.dto.Subject.SubjectResponseDTO;
 import com.spring.quiztime.service.SubjectService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v2/subject")
+@RequestMapping("/api/subject")
 public class SubjectController {
 
 
@@ -27,7 +27,7 @@ public class SubjectController {
     }
 
     @PostMapping
-    public ResponseEntity<SubjectResponseDTO> save(@RequestBody SubjectDTO subject){
+    public ResponseEntity<SubjectResponseDTO> save(@Valid @RequestBody SubjectDTO subject){
 
         System.out.println(subject);
         return subjectService.saveService(subject)
@@ -36,7 +36,7 @@ public class SubjectController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<SubjectResponseDTO> update(@RequestBody SubjectDTO subject,@PathVariable Long id){
+    public ResponseEntity<SubjectResponseDTO> update(@Valid @RequestBody SubjectDTO subject,@PathVariable Long id){
 
 
         return subjectService.updateService(subject,id)

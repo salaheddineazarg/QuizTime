@@ -27,6 +27,8 @@ public class ValidationException {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(ResourceNotFoundException.class)
+
+
     public Map<String, String> handleResourceNotFoundException(ResourceNotFoundException ex) {
         Map<String, String> errors = new HashMap<>();
         errors.put("error", ex.getMessage());

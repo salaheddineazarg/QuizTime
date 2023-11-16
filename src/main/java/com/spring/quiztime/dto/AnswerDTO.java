@@ -1,7 +1,8 @@
 package com.spring.quiztime.dto;
 
 
-import jakarta.persistence.*;
+import com.spring.quiztime.dto.Question.QuestionDTO;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,25 +13,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AnswerDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @NotNull(message = "Question can't be null")
     private QuestionDTO question;
 
-    @ManyToOne
-    private QuizDTO quiz;
+    @NotNull(message = "Quiz ID can't be null")
+    private Long quiz_id;
 
-    @ManyToOne
-    private StudentDTO student;
+    @NotNull(message = "Student ID can't be null")
+    private Long student_id;
 
-    @Column(nullable = false)
+    @NotNull(message = "Total Score can't be  null")
     private double totalScore;
 
-    @ManyToOne
-    private ValidationDTO validation;
+    @NotNull(message = "Validation ID can't be null")
+    private Long validation_id;
 
-    @ManyToOne
-    private AssignQuizStudentDTO assignQuizStudent;
+    @NotNull(message = "AssignQuizStudent ID cannot be null")
+    private Long assignQuizStudent_id;
 }

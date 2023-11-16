@@ -5,10 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-    @Entity
+
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
+    @Entity
     public class Question {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +29,9 @@ import java.util.List;
 
         @Column(nullable = false)
         private int numberFalseAnswers;
+
+        @Column(nullable = false)
+        private double points;
 
         @ManyToOne
         private Level level;

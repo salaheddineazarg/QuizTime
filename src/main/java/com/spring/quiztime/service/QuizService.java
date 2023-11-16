@@ -1,6 +1,5 @@
 package com.spring.quiztime.service;
 
-import com.spring.quiztime.dto.QuestionDTO;
 import com.spring.quiztime.dto.QuizDTO;
 import com.spring.quiztime.entities.Quiz;
 import com.spring.quiztime.repository.QuizRepository;
