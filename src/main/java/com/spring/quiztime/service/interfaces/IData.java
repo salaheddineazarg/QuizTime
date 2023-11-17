@@ -7,11 +7,11 @@ public interface IData<R,T,type> {
 
     List<R> getAllService();
 
-    Optional<R> saveService(T type);
+    Optional<R> saveService(T t);
 
     boolean deleteService(type Id);
 
-    Optional<R> updateService(T type,type Id);
+    Optional<R> updateService(T t,type Id);
 
    Optional<R> findByIdService(type Id);
 }
