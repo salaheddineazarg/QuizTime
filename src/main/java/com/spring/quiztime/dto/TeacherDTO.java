@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 @AllArgsConstructor
 public class TeacherDTO extends UserDTO {
 
-
     private Long id;
 
     @NotBlank(message = "Speciality can't be blank")
