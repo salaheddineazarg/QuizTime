@@ -61,6 +61,9 @@ public class StudentService  implements IStudentService {
     @Override
     public Optional<StudentDTO> findByIdService(Long Id) {
         Student student = studentRepository.findById(Id).get();
-        return Optional.ofNullable(modelMapper.map(student,StudentDTO.class));
+        if (student != null){
+            return Optional.ofNullable(modelMapper.map(student,StudentDTO.class));
+        }
+        return Optional.empty();
     }
 }
