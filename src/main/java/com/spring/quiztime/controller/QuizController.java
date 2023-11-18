@@ -1,7 +1,8 @@
 package com.spring.quiztime.controller;
 
 
-import com.spring.quiztime.dto.QuizDTO;
+import com.spring.quiztime.dto.Quiz.QuizDTO;
+import com.spring.quiztime.dto.Quiz.QuizResponseDTO;
 import com.spring.quiztime.service.QuizService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,13 @@ public class QuizController {
 
 
      @GetMapping
-     public ResponseEntity<List<QuizDTO>> getAll(){
+     public ResponseEntity<List<QuizResponseDTO>> getAll(){
 
          return new ResponseEntity<>(quizService.getAllService(),HttpStatus.OK);
      }
 
     @PostMapping
-    public ResponseEntity<QuizDTO> save(@Valid @RequestBody QuizDTO quizDTO){
+    public ResponseEntity<QuizResponseDTO> save(@Valid @RequestBody QuizDTO quizDTO){
 
         return quizService.saveService(quizDTO)
                 .map(quizSaved -> new ResponseEntity<>(quizSaved, HttpStatus.CREATED))
@@ -35,7 +36,7 @@ public class QuizController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<QuizDTO> update(@Valid @RequestBody QuizDTO quizDTO , Long id){
+    public ResponseEntity<QuizResponseDTO> update(@Valid @RequestBody QuizDTO quizDTO , Long id){
 
         return quizService.updateService(quizDTO,id)
                 .map(quizSaved -> new ResponseEntity<>(quizSaved, HttpStatus.CREATED))
@@ -56,7 +57,7 @@ public class QuizController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<QuizDTO> getById(@PathVariable Long id){
+    public ResponseEntity<QuizResponseDTO> getById(@PathVariable Long id){
 
         return quizService.findByIdService(id)
                 .map(getQuiz -> new ResponseEntity<>(getQuiz,HttpStatus.OK))

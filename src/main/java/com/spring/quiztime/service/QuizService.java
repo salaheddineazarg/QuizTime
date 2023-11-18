@@ -1,6 +1,7 @@
 package com.spring.quiztime.service;
 
-import com.spring.quiztime.dto.QuizDTO;
+import com.spring.quiztime.dto.Quiz.QuizDTO;
+import com.spring.quiztime.dto.Quiz.QuizResponseDTO;
 import com.spring.quiztime.entities.Quiz;
 import com.spring.quiztime.repository.QuizRepository;
 import com.spring.quiztime.repository.TeacherRepository;
@@ -25,13 +26,13 @@ public class QuizService implements IQuizService {
     private ModelMapper modelMapper;
 
     @Override
-    public List<QuizDTO> getAllService() {
+    public List<QuizResponseDTO> getAllService() {
        List<Quiz> quizzes = quizRepository.findAll();
-        return Arrays.asList(modelMapper.map(quizzes,QuizDTO[].class));
+        return Arrays.asList(modelMapper.map(quizzes,QuizResponseDTO[].class));
     }
 
     @Override
-    public Optional<QuizDTO> saveService(QuizDTO quizDTO) {
+    public Optional<QuizResponseDTO> saveService(QuizDTO quizDTO) {
         Quiz quiz = modelMapper.map(quizDTO,Quiz.class);
         if(quizDTO.getTeacher_id() != null){
             quiz.setTeacher(
@@ -40,7 +41,7 @@ public class QuizService implements IQuizService {
         }
 
         quiz = quizRepository.save(quiz);
-        return Optional.of(modelMapper.map(quiz,QuizDTO.class));
+        return Optional.of(modelMapper.map(quiz,QuizResponseDTO.class));
     }
 
     @Override
@@ -54,19 +55,19 @@ public class QuizService implements IQuizService {
     }
 
     @Override
-    public Optional<QuizDTO> updateService(QuizDTO quizDTO, Long Id) {
+    public Optional<QuizResponseDTO> updateService(QuizDTO quizDTO, Long Id) {
         if (quizRepository.existsById(Id)){
             Quiz quiz = modelMapper.map(quizDTO,Quiz.class);
             quiz.setId(Id);
             quiz = quizRepository.save(quiz);
-            return Optional.of(modelMapper.map(quiz,QuizDTO.class));
+            return Optional.of(modelMapper.map(quiz,QuizResponseDTO.class));
         }
         return Optional.empty();
     }
 
     @Override
-    public Optional<QuizDTO> findByIdService(Long Id) {
+    public Optional<QuizResponseDTO> findByIdService(Long Id) {
        Quiz quiz = quizRepository.findById(Id).get();
-        return Optional.ofNullable(modelMapper.map(quiz,QuizDTO.class));
+        return Optional.ofNullable(modelMapper.map(quiz,QuizResponseDTO.class));
     }
 }

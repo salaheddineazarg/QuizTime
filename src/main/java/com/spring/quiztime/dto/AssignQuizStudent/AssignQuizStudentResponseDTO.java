@@ -1,7 +1,7 @@
 package com.spring.quiztime.dto.AssignQuizStudent;
 
 
-import com.spring.quiztime.dto.QuizDTO;
+import com.spring.quiztime.dto.Quiz.QuizDTO;
 import com.spring.quiztime.dto.StudentDTO;
 
 import lombok.Data;
