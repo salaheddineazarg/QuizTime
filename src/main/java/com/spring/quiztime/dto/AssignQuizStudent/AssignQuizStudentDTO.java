@@ -4,7 +4,7 @@ package com.spring.quiztime.dto.AssignQuizStudent;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.spring.quiztime.dto.QuizDTO;
+import com.spring.quiztime.dto.Quiz.QuizDTO;
 import com.spring.quiztime.dto.StudentDTO;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -12,7 +12,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
-import java.util.List;
 
 
 @Data

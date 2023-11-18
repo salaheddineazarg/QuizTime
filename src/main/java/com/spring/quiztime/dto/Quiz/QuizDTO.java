@@ -1,4 +1,4 @@
-package com.spring.quiztime.dto;
+package com.spring.quiztime.dto.Quiz;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
