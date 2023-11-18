@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -20,4 +21,7 @@ public class Teacher extends User{
 
     @Column(nullable = false,length = 50)
     private String speciality;
+
+    @OneToMany(mappedBy = "teacher")
+    private List<Quiz> quizzes;
 }

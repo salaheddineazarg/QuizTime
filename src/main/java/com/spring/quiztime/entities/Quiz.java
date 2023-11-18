@@ -40,7 +40,9 @@ public class Quiz {
     @OneToMany(mappedBy = "quiz")
     private List<QuizQuestion> quizQuestions;
 
+    @OneToMany(mappedBy = "quiz")
+    private List<AssignQuizStudent> assignQuizStudents;
 
-
-
+    @ManyToOne
+    private Teacher teacher;
 }

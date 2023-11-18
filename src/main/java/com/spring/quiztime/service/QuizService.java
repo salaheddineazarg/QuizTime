@@ -3,6 +3,7 @@ package com.spring.quiztime.service;
 import com.spring.quiztime.dto.QuizDTO;
 import com.spring.quiztime.entities.Quiz;
 import com.spring.quiztime.repository.QuizRepository;
+import com.spring.quiztime.repository.TeacherRepository;
 import com.spring.quiztime.service.interfaces.IQuizService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class QuizService implements IQuizService {
 
     @Autowired
     private QuizRepository quizRepository;
+
+    @Autowired
+    private TeacherRepository teacherRepository;
     @Autowired
     private ModelMapper modelMapper;
 
@@ -29,6 +33,12 @@ public class QuizService implements IQuizService {
     @Override
     public Optional<QuizDTO> saveService(QuizDTO quizDTO) {
         Quiz quiz = modelMapper.map(quizDTO,Quiz.class);
+        if(quizDTO.getTeacher_id() != null){
+            quiz.setTeacher(
+                    teacherRepository.findById(quizDTO.getTeacher_id()).get()
+            );
+        }
+
         quiz = quizRepository.save(quiz);
         return Optional.of(modelMapper.map(quiz,QuizDTO.class));
     }

@@ -1,6 +1,9 @@
 package com.spring.quiztime.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.spring.quiztime.dto.TeacherDTO;
+import com.spring.quiztime.entities.Teacher;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -30,7 +33,16 @@ public class QuizDTO {
     @Min(value = 1, message = "Duration must be at least 1")
     private Integer during;
 
+    @NotBlank(message = "More informations can't be blanck")
+    private String moreInformations;
+
     private boolean displayResult;
 
+    @NotNull(message = "Teacher ID can't be null")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Long teacher_id;
+
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private TeacherDTO teacher;
 
 }

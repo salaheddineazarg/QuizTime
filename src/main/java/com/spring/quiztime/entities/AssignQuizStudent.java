@@ -21,6 +21,7 @@ public class AssignQuizStudent {
     private int chance;
 
     @Temporal(TemporalType.TIMESTAMP)
+
     private LocalDateTime startDate;
 
     @Temporal(TemporalType.TIMESTAMP)
