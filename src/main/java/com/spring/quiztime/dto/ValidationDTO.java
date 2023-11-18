@@ -13,9 +13,9 @@ public class ValidationDTO {
 
     private Long id;
 
-    private ResponseDTO response;
+    private Long response_id;
 
-    private QuestionDTO question;
+    private Long question_id;
 
     private double points;
 

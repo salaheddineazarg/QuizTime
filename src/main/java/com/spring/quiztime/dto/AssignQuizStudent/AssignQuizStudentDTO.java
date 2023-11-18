@@ -1,7 +1,11 @@
-package com.spring.quiztime.dto;
+package com.spring.quiztime.dto.AssignQuizStudent;
 
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.spring.quiztime.dto.QuizDTO;
+import com.spring.quiztime.dto.StudentDTO;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -21,26 +25,34 @@ public class AssignQuizStudentDTO {
     private int chance;
 
     @NotNull(message = "Start date cannot be null")
+    @JsonFormat(pattern = "yyyy-MM-dd-HH-mm-ss")
     private LocalDateTime startDate;
 
     @NotNull(message = "End date cannot be null")
+    @JsonFormat(pattern = "yyyy-MM-dd-HH-mm-ss")
     private LocalDateTime endDate;
 
     @Min(value = 0, message = "Score must be a positive number or zero")
     private double score;
 
-    // Assuming result and reason can't be blank, though it depends on your use case
-    @NotBlank(message = "Result cannot be blank")
     private String result;
 
-    @NotBlank(message = "Reason cannot be blank")
+    @NotBlank(message = "Reason can't be blank")
     private String reason;
 
     @NotNull(message = "Quiz ID cannot be null")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Long quiz_id;
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private QuizDTO quiz;
+
     @NotNull(message = "Student ID cannot be null")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Long student_id;
 
-    private List<AnswerDTO> answer;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private StudentDTO student;
+
+  //  private List<AnswerDTO> answer;
 }
