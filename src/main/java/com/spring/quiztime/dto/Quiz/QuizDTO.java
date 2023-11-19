@@ -39,10 +39,8 @@ public class QuizDTO {
     private boolean displayResult;
 
     @NotNull(message = "Teacher ID can't be null")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Long teacher_id;
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private TeacherDTO teacher;
+
 
 }
