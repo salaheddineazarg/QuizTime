@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/affect-question-quiz")
@@ -55,5 +56,15 @@ public class QuizQuestionController {
 
     @GetMapping("{id}")
     public ResponseEntity<QuizQuestionResponseDTO> getById(@Min(value = 1) Long id){
+
+        return quizQuestionService.findByIdService(id)
+                .map(quizQuestion -> new ResponseEntity<>(quizQuestion,HttpStatus.FOUND))
+                .orElse(new ResponseEntity<>(null,HttpStatus.NOT_FOUND));
+    }
+    @GetMapping("by-quiz/{id}")
+    public ResponseEntity<List<QuizQuestionResponseDTO>> getByQuiz(@PathVariable @Min(value = 1) Long id){
+
+          List<QuizQuestionResponseDTO> questionResponseDTOList = quizQuestionService.findBYQuizId(id);
+        return new ResponseEntity<>(questionResponseDTOList,HttpStatus.OK);
     }
 }
