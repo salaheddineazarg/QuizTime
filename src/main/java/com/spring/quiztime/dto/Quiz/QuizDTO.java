@@ -1,16 +1,14 @@
 package com.spring.quiztime.dto.Quiz;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.spring.quiztime.dto.TeacherDTO;
-import com.spring.quiztime.entities.Teacher;
+
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.time.LocalTime;
+
 
 
 
