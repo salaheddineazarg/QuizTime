@@ -1,1 +1,1 @@
-![alt text](https://github.com/salaheddineazarg/QuizTime/blob/main/quizTimeUml.png)
+![alt text](https://github.com/salaheddineazarg/QuizTime/blob/main/YouQuiz.png)
