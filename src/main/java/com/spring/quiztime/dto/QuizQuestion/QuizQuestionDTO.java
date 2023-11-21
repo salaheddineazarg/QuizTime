@@ -1,4 +1,4 @@
-package com.spring.quiztime.dto;
+package com.spring.quiztime.dto.QuizQuestion;
 
 
 import com.spring.quiztime.dto.Question.QuestionDTO;
@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class QuizQuestionDTO {
 
-    /*private Long id;
+    private Long id;
     @Min(value = 0, message = "Temporization must be a non-negative value")
     private int temporization;
 
@@ -23,5 +23,5 @@ public class QuizQuestionDTO {
     private Long quiz_id;
 
     @NotNull(message = "Question ID can't be null")
-    private Long question_id; */
+    private Long question_id;
 }
