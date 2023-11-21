@@ -37,7 +37,7 @@ public class QuizQuestionService implements IQuizQuestionService {
 
     @Override
     public List<QuizQuestionResponseDTO> getAllService() {
-        return null;
+        return Arrays.asList(modelMapper.map(quizQuestionRepository.findAll(),QuizQuestionResponseDTO[].class));
     }
 
 
@@ -107,6 +107,7 @@ public class QuizQuestionService implements IQuizQuestionService {
     }
 
     public List<QuizQuestionResponseDTO> findBYQuizId(Long id){
+        System.out.println(id);
         List<QuizQuestion> quizQuestions = quizQuestionRepository.findByQuizId(id);
         return Arrays.asList(modelMapper.map(quizQuestions,QuizQuestionResponseDTO[].class));
     }
