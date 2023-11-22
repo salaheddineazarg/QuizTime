@@ -69,6 +69,7 @@ public class ValidationService implements IValidationService {
         }
 
         List<Validation> savedValidations = validationRepository.saveAll(validations);
+
         return savedValidations.stream()
                 .map(validation -> modelMapper.map(validation, ValidationResponseDTO.class))
                 .collect(Collectors.toList());

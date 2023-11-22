@@ -21,6 +21,7 @@ public class MediaDTO {
     @NotBlank(message = "Link can't be blank")
     private String link;
 
+    @NotBlank(message = "Link can't be blank")
     private String description;
 
     @NotNull(message = "Question ID can't be null")

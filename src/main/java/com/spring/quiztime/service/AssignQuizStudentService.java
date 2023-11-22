@@ -12,9 +12,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class AssignQuizStudentService implements IAssignQuizStudent {
@@ -59,6 +61,35 @@ public class AssignQuizStudentService implements IAssignQuizStudent {
         return Optional.ofNullable(modelMapper.map(assignQuizStudent,AssignQuizStudentResponseDTO.class));
     }
 
+
+    public List<AssignQuizStudentResponseDTO> saveAllService(List<AssignQuizStudentDTO> assignQuizStudentDTOList) {
+        List<AssignQuizStudent> responseDTOList = new ArrayList<>();
+
+        for (AssignQuizStudentDTO assignQuizStudentDTO : assignQuizStudentDTOList) {
+            AssignQuizStudent assignQuizStudent = modelMapper.map(assignQuizStudentDTO, AssignQuizStudent.class);
+
+            if (assignQuizStudentDTO.getQuiz_id() != null) {
+                assignQuizStudent.setQuiz(
+                        quizRepository.findById(assignQuizStudentDTO.getQuiz_id()).orElse(null)
+                );
+            }
+
+            if (assignQuizStudentDTO.getStudent_id() != null) {
+                assignQuizStudent.setStudent(
+                        studentRepository.findById(assignQuizStudentDTO.getStudent_id()).orElse(null)
+                );
+            }
+
+            responseDTOList.add(assignQuizStudent);
+        }
+        List<AssignQuizStudent> assignQuizStudentList = assignQuizStudentRepository.saveAll(responseDTOList);
+
+        return assignQuizStudentList.stream()
+                .map(assignQuizStudent -> modelMapper.map(assignQuizStudent,AssignQuizStudentResponseDTO.class))
+                .collect(Collectors.toList());
+    }
+
+
     @Override
     public boolean deleteService(Long Id) {
         if(assignQuizStudentRepository.existsById(Id)){
@@ -97,5 +128,11 @@ public class AssignQuizStudentService implements IAssignQuizStudent {
         Optional<AssignQuizStudent> assignQuizStudent = assignQuizStudentRepository.findById(Id);
 
         return assignQuizStudent.map(assignQS -> modelMapper.map(assignQS,AssignQuizStudentResponseDTO.class));
+    }
+    public List<AssignQuizStudentResponseDTO> findByQuizId(Long Id) {
+        List<AssignQuizStudent> assignQuizStudentList = assignQuizStudentRepository.findByQuizId(Id);
+
+        return assignQuizStudentList.stream().map(assignQuizStudent -> modelMapper.map(assignQuizStudent,AssignQuizStudentResponseDTO.class))
+                .collect(Collectors.toList());
     }
 }

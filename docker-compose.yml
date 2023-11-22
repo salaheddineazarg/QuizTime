@@ -1,0 +1,28 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+    networks:
+      - connection
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: quiztime
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: sadinzar29
+
+  spring-app:
+    networks:
+      - connection
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/quiztime
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: sadinzar29
+
+networks:
+  connection:
