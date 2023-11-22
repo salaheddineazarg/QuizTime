@@ -18,15 +18,6 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Question question;
-
-    @ManyToOne
-    private Quiz quiz;
-
-    @ManyToOne
-    private Student student;
-
     @Column(nullable = false)
     private double totalScore;
 

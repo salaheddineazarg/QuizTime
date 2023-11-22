@@ -40,18 +40,13 @@ public class AssignQuizStudentDTO {
     private String reason;
 
     @NotNull(message = "Quiz ID cannot be null")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Long quiz_id;
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private QuizDTO quiz;
 
     @NotNull(message = "Student ID cannot be null")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Long student_id;
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private StudentDTO student;
 
-  //  private List<AnswerDTO> answer;
+
+
 }

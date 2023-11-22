@@ -17,6 +17,7 @@ public class ValidationDTO {
 
     @NotNull(message = "Response ID can't be null")
     private Long response_id;
+
     @NotNull(message = "Question ID can't be null")
     private Long question_id;
 
