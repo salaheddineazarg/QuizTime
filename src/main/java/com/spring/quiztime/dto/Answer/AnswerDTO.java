@@ -1,7 +1,6 @@
-package com.spring.quiztime.dto;
+package com.spring.quiztime.dto.Answer;
 
 
-import com.spring.quiztime.dto.Question.QuestionDTO;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,15 +13,6 @@ import lombok.NoArgsConstructor;
 public class AnswerDTO {
 
     private Long id;
-
-    @NotNull(message = "Question can't be null")
-    private QuestionDTO question;
-
-    @NotNull(message = "Quiz ID can't be null")
-    private Long quiz_id;
-
-    @NotNull(message = "Student ID can't be null")
-    private Long student_id;
 
     @NotNull(message = "Total Score can't be  null")
     private double totalScore;
