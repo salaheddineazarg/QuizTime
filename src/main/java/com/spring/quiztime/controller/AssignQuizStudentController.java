@@ -26,11 +26,10 @@ public class AssignQuizStudentController {
     }
 
     @PostMapping
-    public ResponseEntity<AssignQuizStudentResponseDTO> save(@Valid @RequestBody AssignQuizStudentDTO assignQuizStudentDTO){
+    public ResponseEntity<List<AssignQuizStudentResponseDTO>> save(@Valid @RequestBody List<AssignQuizStudentDTO> assignQuizStudentDTOs){
 
-        return  assignQuizStudentService.saveService(assignQuizStudentDTO)
-                .map(savedAssign -> new ResponseEntity<>(savedAssign, HttpStatus.CREATED))
-                .orElse(new ResponseEntity<>(null,HttpStatus.OK));
+        return  new ResponseEntity<>(assignQuizStudentService.saveAllService(assignQuizStudentDTOs),HttpStatus.CREATED);
+
     }
 
     @PutMapping("{id}")
@@ -53,6 +52,12 @@ public class AssignQuizStudentController {
         return  assignQuizStudentService.findByIdService(id)
                 .map(savedAssign -> new ResponseEntity<>(savedAssign, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(null,HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("student-quiz/{id}")
+    public ResponseEntity<List<AssignQuizStudentResponseDTO>> getByQuizId(@PathVariable @Min(value = 1) Long id ){
+
+        return  new ResponseEntity<>(assignQuizStudentService.findByQuizId(id),HttpStatus.FOUND);
     }
 
 

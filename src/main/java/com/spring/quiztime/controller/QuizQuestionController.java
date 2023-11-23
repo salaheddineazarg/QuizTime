@@ -64,7 +64,6 @@ public class QuizQuestionController {
     @GetMapping("by-quiz/{id}")
     public ResponseEntity<List<QuizQuestionResponseDTO>> getByQuiz(@PathVariable @Min(value = 1) Long id){
 
-          List<QuizQuestionResponseDTO> questionResponseDTOList = quizQuestionService.findBYQuizId(id);
-        return new ResponseEntity<>(questionResponseDTOList,HttpStatus.OK);
+        return new ResponseEntity<>(quizQuestionService.findBYQuizId(id),HttpStatus.FOUND);
     }
 }
