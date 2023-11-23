@@ -1,16 +1,20 @@
 package com.spring.quiztime.service;
 
 
+
 import com.spring.quiztime.dto.Question.QuestionDTO;
 import com.spring.quiztime.dto.Question.QuestionResponseDTO;
+import com.spring.quiztime.entities.Media;
 import com.spring.quiztime.entities.Question;
 import com.spring.quiztime.repository.LevelRepository;
+import com.spring.quiztime.repository.MediaRepository;
 import com.spring.quiztime.repository.QuestionRepository;
 import com.spring.quiztime.repository.SubjectRepository;
 import com.spring.quiztime.service.interfaces.IQuestionService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,6 +32,8 @@ public class QuestionService implements IQuestionService {
     private LevelRepository levelRepository;
     @Autowired
     private SubjectRepository subjectRepository;
+    @Autowired
+    private MediaRepository mediaRepository;
 
 
 
@@ -40,33 +46,50 @@ public class QuestionService implements IQuestionService {
     }
 
     @Override
-    public Optional<QuestionResponseDTO> saveService(QuestionDTO questionDTO){
+    public Optional<QuestionResponseDTO> saveService(QuestionDTO questionDTO) {
         int numberAnswers = questionDTO.getNumberAnswers();
-        int trueAnswers =questionDTO.getNumberCorrectAnswers();
+        int trueAnswers = questionDTO.getNumberCorrectAnswers();
         int falseAnswers = questionDTO.getNumberFalseAnswers();
 
-        if(numberAnswers == trueAnswers + falseAnswers){
+        if (numberAnswers == trueAnswers + falseAnswers) {
 
-            Question question1 = modelMapper.map(questionDTO,Question.class);
 
-            System.out.println(question1);
-            if (questionDTO.getSubject_id() != null){
+
+
+            Question question1 = modelMapper.map(questionDTO, Question.class);
+
+
+            if (questionDTO.getSubject_id() != null) {
                 question1.setSubject(
                         subjectRepository.findById(questionDTO.getSubject_id()).get()
                 );
             }
 
-           if(questionDTO.getLevel_id() != null){
-               question1.setLevel(
-                       levelRepository.findById(questionDTO.getLevel_id()).get()
-               );
-           }
-            question1 = questionRepository.save(question1);
+            if (questionDTO.getLevel_id() != null) {
+                question1.setLevel(
+                        levelRepository.findById(questionDTO.getLevel_id()).get()
+                );
+            }
 
+            if(questionDTO.getMedias().size() > 0){
+                List<Media> medias = Arrays.asList(modelMapper.map(questionDTO.getMedias(), Media[].class));
+                for(int i=0;i<medias.size();i++){
+                    Media media = medias.get(i);
+                    media.setQuestion(question1);
+                    medias.set(i, media);
+                }
+                question1.setMedias(medias);
+            }
+
+            question1 = questionRepository.save(question1);
+            System.out.println(question1.toString());
             return Optional.of(modelMapper.map(question1, QuestionResponseDTO.class));
         }
         return Optional.empty();
     }
+
+
+
 
     @Override
     public boolean deleteService(Long Id) {
@@ -86,9 +109,10 @@ public class QuestionService implements IQuestionService {
 
              if(numberAnswers == trueAnswers + falseAnswers){
 
+
                  Question question1 = modelMapper.map(questionDTO,Question.class);
 
-                 System.out.println(question1);
+
                  if (questionDTO.getSubject_id() != null){
                      question1.setSubject(
                              subjectRepository.findById(questionDTO.getSubject_id()).get()
@@ -100,6 +124,10 @@ public class QuestionService implements IQuestionService {
                              levelRepository.findById(questionDTO.getLevel_id()).get()
                      );
                  }
+
+
+
+
                  question1.setId(Id);
                  question1 = questionRepository.save(question1);
 
