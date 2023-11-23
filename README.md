@@ -9,17 +9,15 @@ endpoint| method | payload | description
 /api/level| `POST` |`{description:string, maxScore: int, minScore: int}`| create a level
 /api/level/{id}| `GET`  | `-` | find level by id
 /api/level/{id}| `PUT`  | `{description:string, maxScore: int, minScore: int}` | edit a level
-/api/level/{id}/questions | `GET` | `-` | get questions of a specific level
 /api/level| `GET` | `-` | get all levels
 
 ### Subject
 endpoint| method | payload                          | description
 -|--------|----------------------------------|-
-/api/level| `POST` | `{title:string, parend_id: int}` | create a subject
+/api/subject| `POST` | `{title:string, parend_id: int}` | create a subject
 /api/subject/{id}| `GET`  | `-`                              | find subject by id
 /api/subject/{id}| `PUT`  | `{title:string, parent_id: int}` | edit a subject
-/api/subject/{id}/questions | `GET` | `-`                              | get questions of a specific subject
-/api/level| `GET` | `-`                              | get all subjects
+/api/subject| `GET` | `-`                              | get all subjects
 
 ### Question
 endpoint| method | payload                                                                                                                                                                        | description                         
@@ -77,3 +75,4 @@ endpoint | method | payload                                                     
 /api/assignQuiz/{id} | `GET` | `-` | get specific assigned quiz
 /api/assignQuiz/{id} | `PUT` | `{score: double, played: int, reason: string, result: string, debutDate: localDateTime, endDate: localDateTime, student_id: int, quiz_id: int}` | update a specific assigned quiz
 /api/assignQuiz/{id} | `DELELTE` | `-` | delete a specific quiz
+/api/assignQuiz/{id} | `GET` | `-` | get specific a specific quiz
