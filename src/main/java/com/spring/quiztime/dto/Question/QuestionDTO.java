@@ -1,9 +1,6 @@
 package com.spring.quiztime.dto.Question;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.spring.quiztime.dto.MediaDTO;
-import com.spring.quiztime.entities.Level;
 import com.spring.quiztime.entities.QuestionType;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -11,9 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
-    @Data
+@Data
     @NoArgsConstructor
     @AllArgsConstructor
     public class QuestionDTO {

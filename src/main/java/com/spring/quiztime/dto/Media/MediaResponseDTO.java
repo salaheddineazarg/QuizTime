@@ -1,6 +1,7 @@
-package com.spring.quiztime.dto;
+package com.spring.quiztime.dto.Media;
 
 
+import com.spring.quiztime.dto.Question.QuestionDTO;
 import com.spring.quiztime.entities.MediaType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -12,18 +13,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MediaDTO {
+public class MediaResponseDTO {
 
     private Long id;
-    @NotNull(message = "Media type can't be null")
     private MediaType mediaType;
-
-    @NotBlank(message = "Link can't be blank")
     private String link;
-
     private String description;
+    private QuestionDTO question;
 
-    @NotNull(message = "Question ID can't be null")
-    private Long question_id;
 
 }
