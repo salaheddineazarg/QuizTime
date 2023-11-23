@@ -1,17 +1,18 @@
 package com.spring.quiztime.dto.Question;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.spring.quiztime.dto.Media.MediaDTO;
 import com.spring.quiztime.entities.QuestionType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.List;
 
 @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public class QuestionDTO {
+@NoArgsConstructor
+@AllArgsConstructor
+public class QuestionDTO {
         private Long id;
         @NotBlank(message = "Text can't be blank")
         private String text;
@@ -39,6 +40,8 @@ import lombok.NoArgsConstructor;
         @NotNull(message = "Subject ID can't be null")
         private Long subject_id;
 
+        @NotNull(message = "Media list can't be null")
+        private List<MediaDTO> medias;
 
 
 }
