@@ -64,7 +64,7 @@ endpoint | method | payload                                                     
 /api/trainer/{id} | `PUT` | `{firstName: string, lastName: string, birthday: localDate, address: string, role: string}` | edit a specific trainer
 /api/trainer/{id} | `DELETE` | `-`                                                                                         | delete a specific trainer
 
-### AssignQuiz
+### AssignQuizToStudent
 
 endpoint | method | payload                                                                                                                                                     | description
 -| - |-------------------------------------------------------------------------------------------------------------------------------------------------------------| - 
