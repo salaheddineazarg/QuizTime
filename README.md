@@ -73,4 +73,4 @@ endpoint | method | payload                                                     
 /api/assignQuiz/{id} | `GET` | `-` | get specific assigned quiz
 /api/assignQuiz/{id} | `PUT` | `{score: double, played: int, reason: string, result: string, debutDate: localDateTime, endDate: localDateTime, student_id: int, quiz_id: int}` | update a specific assigned quiz
 /api/assignQuiz/{id} | `DELELTE` | `-` | delete a specific quiz
-/api/assignQuiz/{id} | `GET` | `-` | get specific a specific quiz
+/api/assignQuiz/quiz/{id} | `GET` | `-` | get specific a specific quiz
