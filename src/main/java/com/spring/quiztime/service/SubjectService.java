@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +25,7 @@ public class SubjectService implements ISubjectService {
 
     @Override
     public List<SubjectResponseDTO> getAllService() {
-        return null;
+        return Arrays.asList(modelMapper.map(subjectRepository.findAll(),SubjectResponseDTO[].class));
     }
 
     @Override

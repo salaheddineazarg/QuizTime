@@ -50,7 +50,9 @@ import static org.mockito.Mockito.when;
 
 
          Optional<LevelDTO> optionalLevelDTO = Optional.of(levelDTO);
+
          when(levelService.saveService(levelDTO)).thenReturn(optionalLevelDTO);
+
         Optional<LevelDTO> savedLevel = levelService.saveService(levelDTO);
          assertThat(savedLevel).isNotNull();
 
