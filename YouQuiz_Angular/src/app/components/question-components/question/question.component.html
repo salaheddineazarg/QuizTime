@@ -1,0 +1,32 @@
+<div class="rounded-t-2xl scrollArea h-[157px] relative ">
+  <div class="bg-[#02A9D6] rounded-t-2xl fixed w-[300px] z-10 pt-1 h-[34px] text-center  border-b border-gray-100">
+    <h4 class="font-semibold text-md text-gray-50">Questions</h4>
+  </div>
+
+  <div *ngFor="let question of questions; let i = index">
+    <h2 id="accordion-color-level">
+      <button (click)="showInfosFunction(i )" type="button" class="flex items-center justify-between w-full p-2 font-medium rtl:text-right text-gray-500 border border-t-0 border-gray-200 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3" [attr.data-accordion-target]="'#accordion-color-body-' + (i + 1)" [attr.aria-controls]="'accordion-color-body-' + (i + 1)">
+        <span> {{question.text |  titlecase}}</span>
+        <svg [ngClass]="{'rotate-0':showInfos[i],'rotate-180':!showInfos[i]}" class="w-3 h-3 shrink-0" fill="black" viewBox="0 0 10 6">
+          <path stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+        </svg>
+      </button>
+    </h2>
+
+    <div class="border-b border-gray-200" [ngClass]="{'block': showInfos[i], 'hidden': !showInfos[i]}" >
+      <div class="p-5 flex justify-between items-center   dark:border-gray-700 dark:bg-gray-900">
+        <p class="mb-2 text-gray-500 dark:text-gray-400">type : <span>{{question.questionType}}</span></p>
+        <p class="mb-2 text-gray-500 dark:text-gray-400">points: <span>{{question.points}}</span></p>
+      </div>
+      <div class="p-5 flex justify-between items-center border  dark:border-gray-700 dark:bg-gray-900">
+        <p class="mb-2 text-gray-500 dark:text-gray-400">Answers Count: <span>{{question.numberAnswers}}</span></p>
+        <p class="mb-2 text-gray-500 dark:text-gray-400">Min points : <span></span></p>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<div  class="bg-black pt-1 h-[34px] text-center  border-b border-gray-100">
+  <h4 class="font-semibold text-md text-white">More Details</h4>
+</div>

@@ -1,0 +1,9 @@
+.scrollArea{
+  overflow-y: auto;
+}
+
+.scrollArea::-webkit-scrollbar{
+  width: 4px;
+  border-radius: 50px;
+  background-color:blue;
+}

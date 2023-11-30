@@ -1,0 +1,13 @@
+.text-animation{
+ animation: animation-text 2s ease-out;
+}
+
+@keyframes animation-text {
+  0%{
+    width:0px;
+  }
+  100%{
+    width: 100%;
+  }
+
+}
