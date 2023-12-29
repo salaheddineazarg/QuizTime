@@ -3,6 +3,7 @@ package com.spring.quiztime.dto;
 
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,6 @@ public class TeacherDTO extends UserDTO {
 
     private Long id;
 
-    @NotBlank(message = "Speciality can't be blank")
+    @NotNull(message = "Speciality cannot be null")
     private String speciality;
 }

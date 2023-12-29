@@ -1,32 +1,35 @@
-<div class="rounded-t-2xl scrollArea h-[157px] relative ">
-  <div class="bg-[#02A9D6] rounded-t-2xl fixed w-[300px] z-10 pt-1 h-[34px] text-center  border-b border-gray-100">
-    <h4 class="font-semibold text-md text-gray-50">Questions</h4>
-  </div>
+<section class="w-full p-[80px]">
 
-  <div *ngFor="let question of questions; let i = index">
-    <h2 id="accordion-color-level">
-      <button (click)="showInfosFunction(i )" type="button" class="flex items-center justify-between w-full p-2 font-medium rtl:text-right text-gray-500 border border-t-0 border-gray-200 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3" [attr.data-accordion-target]="'#accordion-color-body-' + (i + 1)" [attr.aria-controls]="'accordion-color-body-' + (i + 1)">
-        <span> {{question.text |  titlecase}}</span>
-        <svg [ngClass]="{'rotate-0':showInfos[i],'rotate-180':!showInfos[i]}" class="w-3 h-3 shrink-0" fill="black" viewBox="0 0 10 6">
-          <path stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
-        </svg>
-      </button>
-    </h2>
+  <app-table-component [fields]="['Question','Type','Answers Count','Correct Answers','Incorrect Answers','Points','Level']" >
+    <tr *ngFor="let question of Questions$" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+      <td class="px-6 text-center py-4">
+        {{question.text}}
+      </td>
+      <td class="px-6 text-center py-4">
 
-    <div class="border-b border-gray-200" [ngClass]="{'block': showInfos[i], 'hidden': !showInfos[i]}" >
-      <div class="p-5 flex justify-between items-center   dark:border-gray-700 dark:bg-gray-900">
-        <p class="mb-2 text-gray-500 dark:text-gray-400">type : <span>{{question.questionType}}</span></p>
-        <p class="mb-2 text-gray-500 dark:text-gray-400">points: <span>{{question.points}}</span></p>
-      </div>
-      <div class="p-5 flex justify-between items-center border  dark:border-gray-700 dark:bg-gray-900">
-        <p class="mb-2 text-gray-500 dark:text-gray-400">Answers Count: <span>{{question.numberAnswers}}</span></p>
-        <p class="mb-2 text-gray-500 dark:text-gray-400">Min points : <span></span></p>
-      </div>
-    </div>
-  </div>
+      </td>
+      <td class="px-6 text-center py-4">
 
+      </td>
+      <td class="px-6 text-center py-4">
 
-</div>
-<div  class="bg-black pt-1 h-[34px] text-center  border-b border-gray-100">
-  <h4 class="font-semibold text-md text-white">More Details</h4>
-</div>
+      </td>
+      <td class="px-6 text-center py-4">
+
+      </td>
+      <td class="px-6 text-center py-4">
+
+      </td>
+      <td class="px-6 text-center py-4">
+
+      </td>
+      <td class="px-6 text-center py-4">
+        <div class="flex flex-row-reverse gap-2">
+          <svg width="20px" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z" fill="#000000"></path></g></svg>
+          <svg width="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10 11V17" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M14 11V17" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M4 7H20" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+        </div>
+      </td>
+    </tr>
+  </app-table-component>
+
+</section>

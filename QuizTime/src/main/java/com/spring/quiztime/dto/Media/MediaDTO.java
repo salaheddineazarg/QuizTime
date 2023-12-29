@@ -14,15 +14,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MediaDTO {
 
+
     private Long id;
-    @NotNull(message = "Media type can't be null")
+
+    @NotNull(message = "Media type cannot be null")
     private MediaType mediaType;
 
-    @NotBlank(message = "Link can't be blank")
+    @NotBlank(message = "Link cannot be blank")
     private String link;
 
-    @NotBlank(message = "Description can't be blank")
+    @NotBlank(message = "Description cannot be blank")
     private String description;
+
 
 
 }

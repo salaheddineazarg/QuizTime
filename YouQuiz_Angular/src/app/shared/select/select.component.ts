@@ -6,6 +6,5 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./select.component.css']
 })
 export class SelectComponent {
-@Input() defaultInput:string="";
-@Input() options:any;
+@Input() defaultOption:string="";
 }

@@ -2,6 +2,7 @@ package com.spring.quiztime.entities;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,8 @@ public class Teacher extends User{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false,length = 50)
+    @Column(nullable = false)
+    @NotBlank(message = "Speciality cannot be blank")
     private String speciality;
 
     @OneToMany(mappedBy = "teacher")

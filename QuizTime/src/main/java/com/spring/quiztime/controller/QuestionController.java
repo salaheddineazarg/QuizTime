@@ -3,29 +3,31 @@ package com.spring.quiztime.controller;
 
 import com.spring.quiztime.dto.Question.QuestionDTO;
 import com.spring.quiztime.dto.Question.QuestionResponseDTO;
-import com.spring.quiztime.service.QuestionService;
+import com.spring.quiztime.service.impl.QuestionService;
+import com.spring.quiztime.service.interfaces.IQuestionService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/question")
 public class QuestionController {
 
 
-    @Autowired
-    private QuestionService questionService;
 
+    private final IQuestionService questionService;
+
+    public QuestionController(QuestionService questionService){
+        this.questionService = questionService;
+    }
     @GetMapping
-    public ResponseEntity<List<QuestionResponseDTO>> getAll(){
+    public ResponseEntity<Page<QuestionResponseDTO>> getAll(Pageable pageable){
 
-
-        return new ResponseEntity<>(questionService.getAllService(), HttpStatus.OK);
+        return new ResponseEntity<>(questionService.getAllServicePagination(pageable), HttpStatus.OK);
     }
 
     @PostMapping

@@ -3,9 +3,9 @@ package com.spring.quiztime.controller;
 
 
 import com.spring.quiztime.dto.ResponseDTO;
-import com.spring.quiztime.service.ResponseService;
+import com.spring.quiztime.service.impl.ResponseService;
+import com.spring.quiztime.service.interfaces.IResponseService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +17,13 @@ import java.util.List;
 @RequestMapping("/api/response")
 public class ResponseController {
 
-    @Autowired
-    private ResponseService responseService;
+
+    private final IResponseService responseService;
 
 
+    public ResponseController(ResponseService responseService){
+        this.responseService = responseService;
+    }
 
     @GetMapping
     public  ResponseEntity<List<ResponseDTO>> getAll(){

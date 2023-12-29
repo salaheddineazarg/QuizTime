@@ -6,9 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.spring.quiztime.dto.Quiz.QuizDTO;
 import com.spring.quiztime.dto.StudentDTO;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
@@ -18,9 +16,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class AssignQuizStudentDTO {
 
+
     private Long id;
 
-    @Min(value = 1, message = "Chance must be at least 1")
+    @PositiveOrZero(message = "Chance should be a positive number or zero")
     private int chance;
 
     @NotNull(message = "Start date cannot be null")
@@ -31,19 +30,21 @@ public class AssignQuizStudentDTO {
     @JsonFormat(pattern = "yyyy-MM-dd-HH-mm-ss")
     private LocalDateTime endDate;
 
-    @Min(value = 0, message = "Score must be a positive number or zero")
+    @DecimalMin(value = "0", message = "Score must be greater than or equal to zero")
     private double score;
 
+    @NotBlank(message = "Result cannot be blank")
     private String result;
 
-    @NotBlank(message = "Reason can't be blank")
+    @NotBlank(message = "Reason cannot be blank")
     private String reason;
 
     @NotNull(message = "Quiz ID cannot be null")
+    @Positive(message = "Quiz ID should be a positive number")
     private Long quiz_id;
 
-
     @NotNull(message = "Student ID cannot be null")
+    @Positive(message = "Student ID should be a positive number")
     private Long student_id;
 
 

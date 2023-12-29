@@ -2,10 +2,10 @@ package com.spring.quiztime.controller;
 
 
 import com.spring.quiztime.dto.Media.MediaDTO;
-import com.spring.quiztime.service.MediaService;
+import com.spring.quiztime.service.impl.MediaService;
+import com.spring.quiztime.service.interfaces.IMediaService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +17,13 @@ import java.util.List;
 public class MediaController {
 
 
-    @Autowired
-    private MediaService mediaService;
 
+    private final IMediaService mediaService;
+
+
+    public MediaController(MediaService mediaService){
+        this.mediaService=mediaService;
+    }
 
     @GetMapping
     public ResponseEntity<List<MediaDTO>> getAll(){

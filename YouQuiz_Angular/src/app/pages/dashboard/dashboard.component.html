@@ -1,10 +1,10 @@
-<section class="bg-white  w-full h-screen overflow-y-hidden ">
-  <header class="flex items-center justify-between pl-[28px] pr-[90px] pt-[11px]">
+<section class="bg-white  w-full h-screen  ">
+  <header  class="flex bg-white fixed w-full top-0 items-center justify-between pl-[28px] pr-[90px] pt-[11px]">
     <div class="flex gap-10 items-center">
       <img class="w-[80px]" src="assets/images/logo.jpg">
       <h1 class="text-2xl font-semibold ">Quiz Dashboard</h1>
     </div>
-    <div class="flex gap-10 items-center">
+    <div *ngIf="buttonDisplay=='main'" class="flex gap-10 items-center">
       <div class="relative flex w-full flex-wrap items-stretch mb-3">
 
         <input class="form-input px-3 py-2 placeholder-gray-400 text-gray-700 relative bg-white rounded-lg text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full pr-10" placeholder="Search"
@@ -20,17 +20,41 @@
       </div>
       <div class="flex relative w-[60px] h-[40px]  bg-orange-500 justify-center items-center m-1 mr-2 text-xl rounded-full text-white">U </div>
     </div>
-  </header>
-  <section class="flex mt-5  ">
+    <button *ngIf="buttonDisplay=='question'" (click)="showQuestionModal()"
+      class="flex justify-center items-center gap-2 w-28 h-12 cursor-pointer rounded-md shadow-2xl text-white font-semibold bg-gradient-to-r from-indigo-600 via-pink-700 to-[#02A9D6] hover:shadow-xl hover:shadow-indigo-500 hover:scale-105 duration-300 "
+    >
+      Create Question
+    </button>
 
-    <aside class="w-[160px]  h-screen bg-[#02A9D6] pt-[100px] pl-[66px] self-center rounded-tr-[50px] ">
+  </header>
+  <section class="flex ">
+
+
+
+    <aside class="w-[160px] fixed top-[18%] z-[2] h-screen bg-[#02A9D6] pt-[100px] pl-[66px] self-center rounded-tr-[50px] ">
+      <div id="dropdownHover" [ngClass]="{ 'hidden  ':dropDown,  ' block':!dropDown }"  class=" left-[106%] top-[19%] absolute  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+          <li>
+            <a (click)="dropDownFunction()" routerLink="/dashboard/subject"  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Subjects</a>
+          </li>
+          <li>
+            <a  (click)="dropDownFunction()" routerLink="/dashboard/level" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Levels</a>
+          </li>
+          <li>
+            <a  (click)="dropDownFunction()" routerLink="/dashboard/question" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Questions</a>
+          </li>
+          <li>
+            <a  (click)="dropDownFunction()"  routerLink="/dashboard/response" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Responses</a>
+          </li>
+        </ul>
+      </div>
       <div class="flex flex-col gap-5">
 
-        <div (click)="ShowAreafun()" class="bg-white cursor-pointer p-2 rounded-l-full">
+        <div routerLink="/dashboard/main" class="bg-white cursor-pointer p-2 rounded-l-full">
           <app-home-svg  ></app-home-svg>
         </div>
 
-        <div (click)="ShowAreafun()"  class="bg-white cursor-pointer p-2 rounded-l-full">
+        <div (click)="dropDownFunction()" class="bg-white  cursor-pointer p-2 rounded-l-full">
         <app-items-svg></app-items-svg>
         </div>
 
@@ -41,11 +65,9 @@
       </div>
     </aside>
 
-    <main class="w-full  rounded-3xl ">
-      <app-principal-area *ngIf="!showArea"></app-principal-area>
-      <app-items-area *ngIf="!showArea" ></app-items-area>
-      <app-question-table *ngIf="showArea"></app-question-table>
+    <main class="w-full pl-[10%] mt-[11%]  rounded-3xl ">
+     <router-outlet></router-outlet>
     </main>
-
+    <app-question-form (closeModal)="showQuestionModal()" *ngIf="questionModal" ></app-question-form>
   </section>
 </section>

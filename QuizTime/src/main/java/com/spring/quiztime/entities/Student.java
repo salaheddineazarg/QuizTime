@@ -2,6 +2,7 @@ package com.spring.quiztime.entities;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,7 +23,9 @@ public class Student extends User{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @Temporal(TemporalType.DATE)
+    @NotNull(message = "Registration date cannot be null")
     private LocalDate registrationDate;
 
     @OneToMany(mappedBy = "student",fetch = FetchType.LAZY)

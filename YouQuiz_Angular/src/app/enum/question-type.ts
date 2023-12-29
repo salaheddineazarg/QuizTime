@@ -1,5 +1,6 @@
 export enum QuestionType{
-  multiChoice,
-  singleChoice,
-  direct
+
+ multiChoice='multiChoice',
+ singleChoice = 'singleChoice',
+  direct ='direct'
 }

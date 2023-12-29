@@ -3,15 +3,15 @@ package com.spring.quiztime.service.interfaces;
 import java.util.List;
 import java.util.Optional;
 
-public interface IData<R,T,type> {
+public interface IData<Response,Request,type> {
 
-    List<R> getAllService();
+    List<Response> getAllService();
 
-    Optional<R> saveService(T t);
+    Optional<Response> saveService(Request t);
 
     boolean deleteService(type Id);
 
-    Optional<R> updateService(T t,type Id);
+    Optional<Response> updateService(Request t,type Id);
 
-   Optional<R> findByIdService(type Id);
+   Optional<Response> findByIdService(type Id);
 }

@@ -1,6 +1,8 @@
 package com.spring.quiztime.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,15 +20,18 @@ public class Validation {
     private Long id;
 
     @ManyToOne
+    @NotNull(message = "Response cannot be null")
     private Response response;
 
     @ManyToOne
+    @NotNull(message = "Question cannot be null")
     private Question question;
 
     @Column(nullable = false)
+    @DecimalMin(value = "0.0", message = "Points must be a positive number")
     private double points;
 
     @OneToMany(mappedBy = "validation")
-     private List<Answer> answers ;
+    private List<Answer> answers;
 
 }

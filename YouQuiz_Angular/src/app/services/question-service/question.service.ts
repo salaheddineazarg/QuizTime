@@ -1,28 +1,32 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {map, Observable} from "rxjs";
-import {QuestionModel} from "../../models/question.model";
+import {QuestionModel} from "../../models/response/question.model";
+import {PaginationQuestionModel} from "../../models/response/pagination-question-model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionService {
-  baseUrl:string="http://localhost:8080/api"
+  baseUrl:string="http://localhost:8080/api/question"
+  page:number = 0;
   constructor(private http :HttpClient) { }
 
-  getQuestions():Observable<QuestionModel[]> {
 
-    return this.http.get<QuestionModel[]>(this.baseUrl+"/question").pipe(
-      map((question : QuestionModel[])=>{
+  getQuestions(){
 
-        return question.splice(0,3);
-      })
-    );
-}
+    return  this.http.get<PaginationQuestionModel>(this.baseUrl+`?size=5&page=${this.page}`);
 
-  getAllQuestions():Observable<QuestionModel[]>{
+  }
 
-    return this.http.get<QuestionModel[]>(this.baseUrl+"/question");
+
+  addQuestion(question:QuestionModel){
+
+  return   this.http.post<QuestionModel>(this.baseUrl,question);
+  }
+
+  deleteQuestion(id:number){
+
+    return this.http.delete<string>(this.baseUrl+`/${id}`);
   }
 
 }

@@ -9,4 +9,5 @@ public interface IQuizQuestionService extends IData<QuizQuestionResponseDTO, Qui
 
 
     List<QuizQuestionResponseDTO> saveAllService(List<QuizQuestionDTO> quizQuestionDTOList);
+    List<QuizQuestionResponseDTO> findBYQuizId(Long id);
 }

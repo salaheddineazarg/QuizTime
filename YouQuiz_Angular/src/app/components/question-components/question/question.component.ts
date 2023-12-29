@@ -1,6 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {QuestionService} from "../../../services/question-service/question.service";
-import {QuestionModel} from "../../../models/question.model";
+import {QuestionModel} from "../../../models/response/question.model";
+import {select, Store} from "@ngrx/store";
+import {PaginationQuestionModel} from "../../../models/response/pagination-question-model";
+import {Observable} from "rxjs";
+import {selectAllQuestions, selectQuestions} from "../../../state/question/question.selector";
+import {data} from "autoprefixer";
+import {loadQuestions} from "../../../state/question/question.actions";
+
 
 @Component({
   selector: 'app-question',
@@ -8,30 +14,27 @@ import {QuestionModel} from "../../../models/question.model";
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit{
-  showInfos:boolean[] = [];
+  pagination$!:PaginationQuestionModel;
+  Questions$:QuestionModel[]=[];
 
-   questions:QuestionModel[]=[];
-  constructor(private questionService : QuestionService) {
-    this.showInfos = Array(this.questions.length).fill(false);
-  }
-
-  ngOnInit() {
-    this.getAllQuestion();
-  }
-
-  getAllQuestion(){
-    this.questionService.getQuestions().subscribe(
-      (data)=>{
-        this.questions = data;
-        console.log(data)
-      },error => {
-        console.error(error)
+  constructor(private store:Store) {
+    store.select(selectQuestions).subscribe(
+      data=>{
+        console.log(data.pagination)
+        this.Questions$ = data.pagination.content
       }
     )
-
   }
 
-  showInfosFunction(index: number) {
-    this.showInfos[index] = !this.showInfos[index];
+
+
+  getAll(){
+    this.store.dispatch(loadQuestions({pagination:this.pagination$}))
   }
+
+
+  ngOnInit() {
+    this.getAll()
+  }
+
 }

@@ -1,11 +1,64 @@
-<app-form>
-  <app-input label="Text" type="text" placeHolder="Enter a Text" />
-  <app-input label="Answers Count" type="number" placeHolder="Enter a Answers Count" />
-  <app-input label="Correct Answers" type="number" placeHolder="Enter a Correct Answers" />
-  <app-input label="Incorrect Answers" type="number" placeHolder="Enter a Incorrect Answers" />
-  <app-input label="Incorrect Answers" type="number" placeHolder="Enter a Incorrect Answers" />
-  <app-input label="Points" type="number" placeHolder="Enter a Points" />
-  <ng-container button>
-    <app-button type="button" text="Create a Question" class="text-white inline-flex w-full justify-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" ></app-button>
-  </ng-container>
-</app-form>
+<div  class="block overflow-y-auto w-full h-full fixed bg-black/20 z-10 pl-[30%]  overflow-x-hidden justify-center items-center  md:inset-0 ">
+  <div class="relative p-4 w-full max-w-md max-h-full">
+    <!-- Modal content -->
+    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+      <!-- Modal header -->
+      <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+          Create New Question
+        </h3>
+        <button  (click)="getFunction()" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
+          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+          </svg>
+          <span class="sr-only">Close modal</span>
+        </button>
+      </div>
+      <form class="p-4 md:p-5" [formGroup]="formQuestion" >
+        <div class="grid gap-4 mb-4  grid-cols-2">
+          <div class="col-span-2">
+            <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Text</label>
+            <input  formControlName="text" type="text"  value=""   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required>
+          </div>
+          <div class="col-span-2">
+            <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
+            <select   formControlName="type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required>
+              <option value="multiChoice">Multi Choice</option>
+              <option value="singleChoice">Single Choice</option>
+              <option value="direct">Direct</option>
+            </select>
+          </div>
+          <div class="col-span-2">
+            <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Answers Count</label>
+            <input formControlName="numberAnswers" type="number" value=""   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required>
+          </div>
+          <div class="col-span-2">
+            <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correct Answers</label>
+            <input formControlName="correctAnswers"  type="number" value=""   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required>
+          </div>
+          <div class="col-span-2">
+            <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Incorrect Answers</label>
+            <input formControlName="incorrectAnswers"  type="number" value=""   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required>
+          </div>
+          <div class="col-span-2">
+            <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Points</label>
+            <input formControlName="points"  type="number" value=""   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required>
+          </div>
+          <div class="col-span-2">
+            <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subject</label>
+            <select   formControlName="subject" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required>
+              <option *ngFor="let subject of subjects" [value]="subject.title">{{subject.title}}</option>
+
+            </select>
+          </div>
+
+        </div>
+        <button (click)="saveQuestion()"  type="button"   class="bg-gradient-to-r py-3 from-purple-400 to-blue-500 hover:from-pink-500 hover:to-purple-600 text-white font-semibold w-full text-sm   rounded-md shadow-lg transform transition-all duration-500 ease-in-out hover:scale-110 hover:brightness-110 hover:animate-pulse active:animate-bounce">
+          Add Question
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+

@@ -3,9 +3,9 @@ package com.spring.quiztime.controller;
 
 import com.spring.quiztime.dto.Answer.AnswerDTO;
 import com.spring.quiztime.dto.Answer.AnswerResponseDTO;
-import com.spring.quiztime.service.AnswerService;
+import com.spring.quiztime.service.impl.AnswerService;
+import com.spring.quiztime.service.interfaces.IAnswerService;
 import jakarta.validation.constraints.Min;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +17,14 @@ import java.util.List;
 public class AnswerController {
 
 
-    @Autowired
-    private AnswerService answerService;
 
+    private final IAnswerService answerService;
+
+
+    public AnswerController(AnswerService answerService){
+        this.answerService = answerService;
+
+    }
 
     @GetMapping
     public ResponseEntity<List<AnswerResponseDTO>> getAll(){

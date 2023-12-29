@@ -3,10 +3,10 @@ package com.spring.quiztime.controller;
 
 import com.spring.quiztime.dto.Validation.ValidationDTO;
 import com.spring.quiztime.dto.Validation.ValidationResponseDTO;
-import com.spring.quiztime.service.ValidationService;
+import com.spring.quiztime.service.impl.ValidationService;
+import com.spring.quiztime.service.interfaces.IValidationService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +18,13 @@ import java.util.List;
 @RequestMapping("api/validation")
 public class ValidationController {
 
-    @Autowired
-    private ValidationService validationService;
 
+    private final IValidationService validationService;
+
+
+    public ValidationController(ValidationService validationService){
+        this.validationService = validationService;
+    }
 
     @GetMapping
     private ResponseEntity<List<ValidationResponseDTO>> getAll(){

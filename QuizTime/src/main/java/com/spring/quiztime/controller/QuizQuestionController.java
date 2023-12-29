@@ -3,25 +3,27 @@ package com.spring.quiztime.controller;
 
 import com.spring.quiztime.dto.QuizQuestion.QuizQuestionDTO;
 import com.spring.quiztime.dto.QuizQuestion.QuizQuestionResponseDTO;
-import com.spring.quiztime.service.QuizQuestionService;
+import com.spring.quiztime.service.impl.QuizQuestionService;
+import com.spring.quiztime.service.interfaces.IQuizQuestionService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/affect-question-quiz")
 public class QuizQuestionController {
 
 
-    @Autowired
-    private QuizQuestionService quizQuestionService;
 
+    private final IQuizQuestionService quizQuestionService;
+
+     public QuizQuestionController(QuizQuestionService quizQuestionService){
+         this.quizQuestionService =quizQuestionService;
+     }
 
     @GetMapping
     public ResponseEntity<List<QuizQuestionResponseDTO>> getAll(){

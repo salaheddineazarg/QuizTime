@@ -2,9 +2,7 @@ package com.spring.quiztime.dto.Quiz;
 
 
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,26 +15,27 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class QuizDTO {
 
+
     private Long id;
+
     @NotBlank(message = "Title cannot be blank")
     private String title;
 
-    @NotNull(message = "Passing score cannot be null")
-    @Min(value = 0, message = "Passing score must be a positive number")
+    @Min(value = 0, message = "Passing score should not be negative")
     private Double passingScore;
 
-    @Min(value = 1, message = "Chances must be at least 1")
+    @Positive(message = "Chances should be a positive number")
     private Integer chances;
 
-    @Min(value = 1, message = "Duration must be at least 1")
+    @Positive(message = "During should be a positive number")
     private Integer during;
 
-    @NotBlank(message = "More informations can't be blanck")
+    @NotBlank(message = "More Informations cannot be blank")
     private String moreInformations;
 
     private boolean displayResult;
 
-    @NotNull(message = "Teacher ID can't be null")
+    @NotNull(message = "Teacher ID cannot be null")
     private Long teacher_id;
 
 

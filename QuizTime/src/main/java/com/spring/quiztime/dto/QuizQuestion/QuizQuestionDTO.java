@@ -1,9 +1,7 @@
 package com.spring.quiztime.dto.QuizQuestion;
 
 
-import com.spring.quiztime.dto.Question.QuestionDTO;
-import com.spring.quiztime.dto.Quiz.QuizDTO;
-import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,13 +13,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class QuizQuestionDTO {
 
+
     private Long id;
-    @Min(value = 0, message = "Temporization must be a non-negative value")
+
+    @Positive(message = "Temporization should be a positive number")
     private int temporization;
 
-    @NotNull(message = "Quiz ID can't be null")
+    @NotNull(message = "Quiz ID cannot be null")
+    @Positive(message = "Quiz ID should be a positive number")
     private Long quiz_id;
 
-    @NotNull(message = "Question ID can't be null")
+    @NotNull(message = "Question ID cannot be null")
+    @Positive(message = "Question ID should be a positive number")
     private Long question_id;
 }

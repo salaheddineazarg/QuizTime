@@ -2,9 +2,9 @@ package com.spring.quiztime.controller;
 
 import com.spring.quiztime.dto.Subject.SubjectDTO;
 import com.spring.quiztime.dto.Subject.SubjectResponseDTO;
-import com.spring.quiztime.service.SubjectService;
+import com.spring.quiztime.service.impl.SubjectService;
+import com.spring.quiztime.service.interfaces.ISubjectService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +16,13 @@ import java.util.List;
 public class SubjectController {
 
 
-    @Autowired
-    private SubjectService subjectService;
 
+    private final ISubjectService subjectService;
+
+
+    public SubjectController(SubjectService subjectService){
+        this.subjectService = subjectService;
+    }
 
     @GetMapping
     public  ResponseEntity<List<SubjectResponseDTO>> getAll(){

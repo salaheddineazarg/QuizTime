@@ -3,9 +3,9 @@ package com.spring.quiztime.controller;
 
 import com.spring.quiztime.dto.Quiz.QuizDTO;
 import com.spring.quiztime.dto.Quiz.QuizResponseDTO;
-import com.spring.quiztime.service.QuizService;
+import com.spring.quiztime.service.impl.QuizService;
+import com.spring.quiztime.service.interfaces.IQuizService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +17,11 @@ import java.util.List;
 public class QuizController {
 
 
-    @Autowired
-      private QuizService quizService;
+      private final IQuizService quizService;
+
+        public QuizController(QuizService quizService){
+            this.quizService = quizService;
+        }
 
 
      @GetMapping

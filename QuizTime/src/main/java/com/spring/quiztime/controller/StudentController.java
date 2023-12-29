@@ -2,10 +2,10 @@ package com.spring.quiztime.controller;
 
 
 import com.spring.quiztime.dto.StudentDTO;
-import com.spring.quiztime.service.StudentService;
+import com.spring.quiztime.service.impl.StudentService;
+import com.spring.quiztime.service.interfaces.IStudentService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +16,13 @@ import java.util.List;
 @RequestMapping("/api/student")
 public class StudentController {
 
-    @Autowired
-    private StudentService studentService;
 
+    private final IStudentService studentService;
+
+
+    public StudentController(StudentService studentService){
+        this.studentService = studentService;
+    }
 
     @GetMapping
     public ResponseEntity<List<StudentDTO>> getAll(){

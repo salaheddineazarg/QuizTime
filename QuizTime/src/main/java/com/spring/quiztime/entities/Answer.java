@@ -2,6 +2,8 @@ package com.spring.quiztime.entities;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +21,9 @@ public class Answer {
     private Long id;
 
     @Column(nullable = false)
-    private double totalScore;
+    @NotNull(message = "Total score cannot be null")
+    @DecimalMin(value = "0.0", message = "Total score must be a positive number")
+    private Double totalScore;
 
     @ManyToOne
     private Validation validation;

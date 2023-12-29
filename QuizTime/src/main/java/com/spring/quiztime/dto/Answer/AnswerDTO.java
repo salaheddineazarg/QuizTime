@@ -1,7 +1,10 @@
 package com.spring.quiztime.dto.Answer;
 
 
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,14 +15,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AnswerDTO {
 
+
+
     private Long id;
 
-    @NotNull(message = "Total Score can't be  null")
+    @DecimalMin(value = "0.0", message = "Total score must be greater than or equal to zero")
     private double totalScore;
 
-    @NotNull(message = "Validation ID can't be null")
+    @NotNull(message = "Validation ID cannot be null")
+    @Positive(message = "Validation ID should be a positive  number")
     private Long validation_id;
 
-    @NotNull(message = "AssignQuizStudent ID cannot be null")
+    @NotNull(message = "Assign quiz student ID cannot be null")
+    @Positive(message = "Assign quiz student ID should be a positive number")
     private Long assignQuizStudent_id;
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-form',
@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class FormComponent {
 
+  modal:boolean=true;
+
+
+
+  modalFunction(){
+    this.modal=!this.modal
+  }
 }

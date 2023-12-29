@@ -5,6 +5,7 @@ import com.spring.quiztime.entities.QuestionType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 
 import java.util.List;
@@ -13,34 +14,33 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class QuestionDTO {
+
+
+
         private Long id;
-        @NotBlank(message = "Text can't be blank")
+
+        @NotBlank(message = "Text cannot be blank")
         private String text;
 
-        @NotNull(message = "Question type can't be null")
+        @NotNull(message = "Question type cannot be null")
         private QuestionType questionType;
 
-        @Min(value = 0, message = "Number of answers must be 0 or a positive number")
+        @PositiveOrZero(message = "Number of answers should be positive or zero")
         private int numberAnswers;
 
-        @Min(value = 0, message = "Number of correct answers must be 0 or a positive number")
+        @Min(value = 0, message = "Number of correct answers should be a non-negative number")
         private int numberCorrectAnswers;
 
-        @Min(value = 0, message = "Number of false answers must be 0 or a positive number")
+        @Min(value = 0, message = "Number of false answers should be a non-negative number")
         private int numberFalseAnswers;
 
-        @Min(value = 0, message = "Points must be a positive number or zero")
+        @PositiveOrZero(message = "Points should be positive or zero")
         private double points;
 
-        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-        @NotNull(message = "Level ID can't be null")
         private Long level_id;
 
-        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-        @NotNull(message = "Subject ID can't be null")
         private Long subject_id;
 
-        @NotNull(message = "Media list can't be null")
         private List<MediaDTO> medias;
 
 
