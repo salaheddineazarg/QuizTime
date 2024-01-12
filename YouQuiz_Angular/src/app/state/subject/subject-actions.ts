@@ -1,13 +1,8 @@
 import {createAction, props} from "@ngrx/store";
-import {SubjectModel} from "../../models/response/subject.model";
-
-
-export const loadSubjects = createAction(
-  '[Subject Page] enter'
-)
+import {SubjectModel} from "../../models/subject.model";
 
 export const subjectsLoaded = createAction(
-  '[Subject Api] subject loaded successfully',
+  '[Subject Page] subject loaded successfully',
   props<{subjects: SubjectModel[]}>()
 )
 

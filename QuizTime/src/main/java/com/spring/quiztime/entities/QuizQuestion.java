@@ -21,11 +21,11 @@ public class QuizQuestion {
     @Min(value = 0, message = "Temporization should be a non-negative number")
     private int temporization;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @NotNull(message = "Quiz cannot be null")
     private Quiz quiz;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @NotNull(message = "Question cannot be null")
     private Question question;
 }

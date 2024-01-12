@@ -8,8 +8,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { HomeSvgComponent } from './icons/home-svg/home-svg.component';
 import { ItemsSvgComponent } from './icons/items-svg/items-svg.component';
 import { PersonSvgComponent } from './icons/person-svg/person-svg.component';
-import { LevelComponent } from './components/level/level.component';
-import { PrincipalAreaComponent } from './components/principal-area/principal-area.component';
+import { LevelComponent } from './components/level-components/level/level.component';
 import { ItemsAreaComponent } from './components/items-area/items-area.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from "@angular/common/http";
@@ -20,7 +19,13 @@ import { QuestionFormComponent } from './components/question-components/question
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ResponseComponent } from './components/response-components/response/response.component';
 import {StateModule} from "./state/state-module";
-import { MediaComponent } from './components/media/media.component';
+import { MediaComponent } from './components/media-components/media/media.component';
+import { MediaFormComponent } from './components/media-components/media-form/media-form.component';
+import { LevelFormComponent } from './components/level-components/level-form/level-form.component';
+import { SubjectFormComponent } from './components/subject-component/subject-form/subject-form.component';
+import { ValidationComponent } from './components/validation/validation.component';
+import { QuizComponent } from './components/quiz-components/quiz/quiz.component';
+import { QuizFormComponent } from './components/quiz-components/quiz-form/quiz-form.component';
 
 
 
@@ -34,13 +39,18 @@ import { MediaComponent } from './components/media/media.component';
     ItemsSvgComponent,
     PersonSvgComponent,
     LevelComponent,
-    PrincipalAreaComponent,
     ItemsAreaComponent,
     SubjectComponent,
     QuestionComponent,
     QuestionFormComponent,
     ResponseComponent,
     MediaComponent,
+    MediaFormComponent,
+    LevelFormComponent,
+    SubjectFormComponent,
+    ValidationComponent,
+    QuizComponent,
+    QuizFormComponent,
   ],
     imports: [
         BrowserModule,
@@ -51,7 +61,6 @@ import { MediaComponent } from './components/media/media.component';
         FormsModule,
         ReactiveFormsModule,
         StateModule
-
     ],
   providers: [],
   bootstrap: [AppComponent]

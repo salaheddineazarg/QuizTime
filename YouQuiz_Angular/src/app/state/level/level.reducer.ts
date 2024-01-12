@@ -1,4 +1,4 @@
-import {levelModel} from "../../models/response/level.model";
+import {levelModel} from "../../models/level.model";
 import {createReducer, on} from "@ngrx/store";
 import {addLevel, loadLevels, removeLevel} from "./level.actions";
 

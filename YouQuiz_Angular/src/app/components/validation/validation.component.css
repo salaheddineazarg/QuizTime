@@ -1,0 +1,12 @@
+.answer::-webkit-scrollbar-thumb{
+  background-color: #2389ff;
+  border-radius: 10px;
+  width: 1px;
+
+}
+
+.answer::-webkit-scrollbar{
+  background-color: white;
+  width: 6px;
+  padding: 1px;
+}

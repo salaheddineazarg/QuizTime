@@ -1,13 +1,13 @@
 import { createSelector} from '@ngrx/store';
-import {PaginationState} from "./question.reducer";
+import {QuestionState} from "./question.reducer";
 import {AppState} from "../app.state";
 
 
 
 
-export const selectQuestions: (state:AppState) => PaginationState = (state) => state.pagination;
+export const selectQuestions: (state:AppState) => QuestionState = (state) => state.questions;
 
 export const selectAllQuestions = createSelector(
   selectQuestions,
-  (state: PaginationState) => state.pagination
+  (state: QuestionState) => state.questions
 );

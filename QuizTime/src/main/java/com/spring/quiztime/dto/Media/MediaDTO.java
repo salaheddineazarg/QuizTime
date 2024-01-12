@@ -1,7 +1,7 @@
 package com.spring.quiztime.dto.Media;
 
 
-import com.spring.quiztime.entities.MediaType;
+import com.spring.quiztime.enumuration.MediaType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;

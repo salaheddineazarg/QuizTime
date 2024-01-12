@@ -2,8 +2,8 @@ import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
 import {SubjectService} from "../../services/subject-service/subject-service";
 import {exhaustMap, map, of, switchMap, tap} from "rxjs";
-import {addSubject, loadSubjects, removeSubject, subjectsLoaded} from "./subject-actions";
-import {SubjectModel} from "../../models/response/subject.model";
+import {addSubject,removeSubject, subjectsLoaded} from "./subject-actions";
+import {SubjectModel} from "../../models/subject.model";
 
 
 @Injectable()
@@ -15,14 +15,13 @@ export  class SubjectEffects{
 
   loadSubjects$ =createEffect(()=>
     this.action$.pipe(
-      ofType(loadSubjects),
+      ofType(subjectsLoaded),
       exhaustMap(()=>{
         return this.service.getSubjects().pipe(
           map((subjects:SubjectModel[])=> subjectsLoaded({subjects}))
         )
       })
     )
-
   )
 
   addSubject$ = createEffect(()=>

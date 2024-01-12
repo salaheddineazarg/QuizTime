@@ -28,7 +28,7 @@ public class Student extends User{
     @NotNull(message = "Registration date cannot be null")
     private LocalDate registrationDate;
 
-    @OneToMany(mappedBy = "student",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "student",fetch = FetchType.LAZY,orphanRemoval = true)
     private List<AssignQuizStudent> assignQuizStudents;
 
 }

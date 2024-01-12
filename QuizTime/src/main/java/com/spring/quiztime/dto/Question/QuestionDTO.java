@@ -1,7 +1,6 @@
 package com.spring.quiztime.dto.Question;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.spring.quiztime.dto.Media.MediaDTO;
-import com.spring.quiztime.entities.QuestionType;
+import com.spring.quiztime.enumuration.QuestionType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

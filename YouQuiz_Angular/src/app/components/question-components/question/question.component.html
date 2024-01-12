@@ -2,34 +2,37 @@
 
   <app-table-component [fields]="['Question','Type','Answers Count','Correct Answers','Incorrect Answers','Points','Level']" >
     <tr *ngFor="let question of Questions$" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-      <td class="px-6 text-center py-4">
-        {{question.text}}
+      <td class="pl-2">
+        {{question.text+" ?" | titlecase}}
       </td>
       <td class="px-6 text-center py-4">
-
+       {{question.questionType}}
       </td>
       <td class="px-6 text-center py-4">
-
+       {{question.numberAnswers}}
       </td>
       <td class="px-6 text-center py-4">
-
+       {{question.numberCorrectAnswers}}
       </td>
       <td class="px-6 text-center py-4">
-
+        {{question.numberFalseAnswers}}
       </td>
       <td class="px-6 text-center py-4">
-
+      {{question.points}}
       </td>
       <td class="px-6 text-center py-4">
-
+     {{question.level.name | titlecase}}
       </td>
       <td class="px-6 text-center py-4">
         <div class="flex flex-row-reverse gap-2">
-          <svg width="20px" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z" fill="#000000"></path></g></svg>
-          <svg width="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10 11V17" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M14 11V17" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M4 7H20" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+          <svg (click)="showModal()"  class="cursor-pointer" height="30px" width="30px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path style="fill:#C3E678;" d="M238.345,189.773h247.172c14.626,0,26.483,11.857,26.483,26.483v158.897 c0,14.626-11.857,26.483-26.483,26.483H344.276v29.116c0,5.544-6.702,8.32-10.622,4.399l-33.516-33.515h-61.793 c-14.626,0-26.483-11.857-26.483-26.483V216.256C211.862,201.63,223.719,189.773,238.345,189.773z"></path> <path style="fill:#A5D76E;" d="M211.862,216.256v158.897c0,1.9,0.218,3.746,0.599,5.534 c61.705-24.77,105.332-85.043,105.332-155.603c0-12.122-1.353-23.918-3.795-35.31h-75.654 C223.719,189.773,211.862,201.63,211.862,216.256z"></path> <path style="fill:#80f0ff;" d="M300.138,225.083c0-82.881-67.188-150.069-150.069-150.069S0,142.202,0,225.083 c0,72.598,51.555,133.146,120.05,147.054l45.199,45.199c4.171,4.171,11.303,1.217,11.303-4.682v-39.978 C246.78,360.151,300.138,298.912,300.138,225.083z"></path> <circle style="fill:#4c75f0;" cx="150.069" cy="225.125" r="114.759"></circle> <g> <path style="fill:#FFFFFF;" d="M150.074,304.582c-0.003,0-0.008,0.001-0.011,0c-4.875,0-8.833-3.957-8.833-8.833 c0-0.001,0-0.003,0-0.006s0-0.003,0-0.006c0-4.875,3.957-8.833,8.833-8.833c0.002,0,0.007-0.001,0.011,0 c4.875,0,8.833,3.957,8.833,8.833c0,0.001,0,0.002,0,0.003c0,0.002,0,0.004,0,0.007 C158.908,300.625,154.95,304.582,150.074,304.582z"></path> <path style="fill:#FFFFFF;" d="M361.931,348.67c-2.259,0-4.519-0.862-6.242-2.585l-44.138-44.138 c-3.448-3.447-3.448-9.036,0-12.483c3.447-3.447,9.036-3.447,12.483,0l37.897,37.895l82.034-82.034 c3.447-3.447,9.036-3.447,12.483,0c3.448,3.447,3.448,9.036,0,12.483l-88.276,88.276C366.45,347.808,364.19,348.67,361.931,348.67z "></path> <path style="fill:#FFFFFF;" d="M150.069,269.261c-4.875,0-8.828-3.953-8.828-8.828v-2.637c0-11.743,7.631-21.921,18.989-25.327 c14.806-4.44,25.148-18.349,25.149-33.826c0.001-9.183-3.741-17.983-10.536-24.778c-6.794-6.794-15.592-10.536-24.775-10.536 c-0.001,0-0.001,0-0.003,0c-19.469,0.001-35.308,15.841-35.308,35.31c0,4.875-3.953,8.828-8.828,8.828 c-4.875,0-8.828-3.953-8.828-8.828c0-29.203,23.758-52.963,52.962-52.966c0,0,0.003,0,0.004,0c13.898,0,27.128,5.578,37.258,15.706 c10.13,10.13,15.708,23.363,15.706,37.262c-0.002,23.211-15.518,44.074-37.732,50.735c-3.831,1.149-6.406,4.531-6.406,8.416v2.637 C158.897,265.31,154.944,269.261,150.069,269.261z"></path> </g> </g></svg>
+          <svg class="cursor-pointer" width="20px" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z" fill="#000000"></path></g></svg>
+          <svg (click)="delete(question.id)" class="cursor-pointer" width="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10 11V17" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M14 11V17" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M4 7H20" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
         </div>
       </td>
     </tr>
   </app-table-component>
+
+  <app-validation (closeModal)="showModal()"  *ngIf="ResponseModal"></app-validation>
 
 </section>

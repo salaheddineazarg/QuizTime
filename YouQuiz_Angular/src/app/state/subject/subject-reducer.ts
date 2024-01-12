@@ -1,14 +1,14 @@
 import {createReducer, on} from "@ngrx/store";
-import {addSubject, loadSubjects, removeSubject, subjectsLoaded} from "./subject-actions";
-import {SubjectModel} from "../../models/response/subject.model";
+import {addSubject,removeSubject, subjectsLoaded} from "./subject-actions";
+import {SubjectModel} from "../../models/subject.model";
 
 
 export interface SubjectState{
   subjects : SubjectModel[];
 }
 
-const initialState:SubjectState={
-   subjects : []
+const initialState : SubjectState = {
+   subjects:[]
 }
 
 

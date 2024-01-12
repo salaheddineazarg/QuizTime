@@ -1,5 +1,6 @@
 package com.spring.quiztime.entities;
 
+import com.spring.quiztime.enumuration.MediaType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -27,7 +28,7 @@ public class Media {
     @NotBlank(message = "Description cannot be blank")
     private String description;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Question question;
 
 

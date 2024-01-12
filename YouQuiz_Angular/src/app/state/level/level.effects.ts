@@ -5,7 +5,7 @@ import {LevelService} from "../../services/level-service/level.service";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
 import {addLevel, loadLevels, removeLevel} from "./level.actions";
 import {exhaustMap,map, switchMap} from "rxjs";
-import {levelModel} from "../../models/response/level.model";
+import {levelModel} from "../../models/level.model";
 
 
 @Injectable()

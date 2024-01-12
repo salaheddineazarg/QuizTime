@@ -39,14 +39,14 @@ public class AssignQuizStudent {
     @Size(max = 255, message = "Reason length should be at most 255 characters")
     private String reason;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @NotNull(message = "Quiz cannot be null")
     private Quiz quiz;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @NotNull(message = "Student cannot be null")
     private Student student;
 
-    @OneToMany(mappedBy = "assignQuizStudent")
+    @OneToMany(mappedBy = "assignQuizStudent",orphanRemoval = true)
     private List<Answer> answer;
 }

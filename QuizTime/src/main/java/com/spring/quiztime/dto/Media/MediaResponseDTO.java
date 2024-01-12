@@ -2,9 +2,7 @@ package com.spring.quiztime.dto.Media;
 
 
 import com.spring.quiztime.dto.Question.QuestionDTO;
-import com.spring.quiztime.entities.MediaType;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import com.spring.quiztime.enumuration.MediaType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

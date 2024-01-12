@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {QuestionModel} from "../../models/response/question.model";
-import {PaginationQuestionModel} from "../../models/response/pagination-question-model";
+import {QuestionModel} from "../../models/question.model";
+import {PaginationQuestionModel} from "../../models/pagination-question-model";
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +14,13 @@ export class QuestionService {
 
   getQuestions(){
 
-    return  this.http.get<PaginationQuestionModel>(this.baseUrl+`?size=5&page=${this.page}`);
+    return  this.http.get<QuestionModel[]>(this.baseUrl);
 
   }
 
 
   addQuestion(question:QuestionModel){
-
+    console.log(question)
   return   this.http.post<QuestionModel>(this.baseUrl,question);
   }
 

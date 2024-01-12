@@ -19,11 +19,11 @@ public class Validation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @NotNull(message = "Response cannot be null")
     private Response response;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @NotNull(message = "Question cannot be null")
     private Question question;
 
@@ -31,7 +31,7 @@ public class Validation {
     @DecimalMin(value = "0.0", message = "Points must be a positive number")
     private double points;
 
-    @OneToMany(mappedBy = "validation")
+    @OneToMany(mappedBy = "validation",orphanRemoval = true)
     private List<Answer> answers;
 
 }

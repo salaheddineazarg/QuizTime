@@ -31,6 +31,6 @@ public class Subject  {
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
     private List<Subject> childs;
 
-    @OneToMany(mappedBy = "subject", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "subject", fetch = FetchType.LAZY,orphanRemoval = true)
     private List<Question> questions;
 }

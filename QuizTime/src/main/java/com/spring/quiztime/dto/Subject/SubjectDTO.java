@@ -15,14 +15,13 @@ import lombok.*;
 @AllArgsConstructor
 public class SubjectDTO {
 
-    @NotNull(message = "ID cannot be null")
     private Long id;
 
     @NotBlank(message = "Title cannot be blank")
     private String title;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @Positive(message = "Parent ID should be a positive number")
+
     private Long parent_id;
 
 

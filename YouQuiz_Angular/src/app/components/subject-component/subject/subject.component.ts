@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {SubjectService} from "../../../services/subject-service/subject-service";
 import {Observable} from "rxjs";
-import {SubjectModel} from "../../../models/response/subject.model";
+import {SubjectModel} from "../../../models/subject.model";
+import {Store} from "@ngrx/store";
+import {removeSubject, subjectsLoaded} from "../../../state/subject/subject-actions";
+import {selectAllSubject} from "../../../state/subject/subject-selector";
 
 @Component({
   selector: 'app-subject',
@@ -9,27 +12,24 @@ import {SubjectModel} from "../../../models/response/subject.model";
   styleUrls: ['./subject.component.css']
 })
 export class SubjectComponent implements OnInit{
-  dataSubjects:SubjectModel[]=[];
+  subjects!:SubjectModel[];
   showInfosSubject:boolean[]= [];
-  constructor(private subjectService:SubjectService) {}
+
+  delete(id:number){
+    this.store.dispatch(removeSubject({id}))
+  }
+
+
+  constructor(private store:Store) {
+    store.dispatch(subjectsLoaded({subjects:this.subjects}))
+  }
   ngOnInit() {
-  this.getSubjects();
-   this.showInfosSubject = Array(this.dataSubjects.length).fill(false);
-  }
-
-  private getSubjects(): void {
-    this.subjectService.getSubjects().subscribe(
-      (data: SubjectModel[]) => {
-        this.dataSubjects = data;
-        console.log(data)
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
-
-  showInfosSubjectFunction(index: number) {
-    this.showInfosSubject[index] = !this.showInfosSubject[index];
+  this.store.select(selectAllSubject).subscribe(
+    subjects =>{
+      this.subjects =subjects;
+    }
+  )
   }
 }
+
+

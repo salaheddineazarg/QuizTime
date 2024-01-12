@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {QuestionModel} from "../../../models/response/question.model";
+import {QuestionModel} from "../../../models/question.model";
 import {select, Store} from "@ngrx/store";
-import {PaginationQuestionModel} from "../../../models/response/pagination-question-model";
+import {PaginationQuestionModel} from "../../../models/pagination-question-model";
 import {Observable} from "rxjs";
 import {selectAllQuestions, selectQuestions} from "../../../state/question/question.selector";
 import {data} from "autoprefixer";
-import {loadQuestions} from "../../../state/question/question.actions";
+import {loadQuestions, removeQuestion} from "../../../state/question/question.actions";
 
 
 @Component({
@@ -14,27 +14,38 @@ import {loadQuestions} from "../../../state/question/question.actions";
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit{
-  pagination$!:PaginationQuestionModel;
   Questions$:QuestionModel[]=[];
+  ResponseModal=false;
 
+
+
+
+  getAll(){
+    this.store.dispatch(loadQuestions({questions:this.Questions$}))
+  }
+
+
+  showModal(){
+    this.ResponseModal=!this.ResponseModal;
+  }
+
+  delete(id:number){
+    this.store.dispatch(removeQuestion({id}))
+  }
+
+  ngOnInit() {
+    this.getAll()
+  }
   constructor(private store:Store) {
-    store.select(selectQuestions).subscribe(
-      data=>{
-        console.log(data.pagination)
-        this.Questions$ = data.pagination.content
+    store.select(selectAllQuestions).subscribe(
+      questions=>{
+        console.log(questions)
+        this.Questions$ = questions;
       }
     )
   }
 
 
 
-  getAll(){
-    this.store.dispatch(loadQuestions({pagination:this.pagination$}))
-  }
-
-
-  ngOnInit() {
-    this.getAll()
-  }
 
 }

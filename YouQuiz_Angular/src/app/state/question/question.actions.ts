@@ -1,6 +1,7 @@
 import {createAction, props} from "@ngrx/store";
-import {QuestionModel} from "../../models/response/question.model";
-import {PaginationQuestionModel} from "../../models/response/pagination-question-model";
+import {QuestionModel} from "../../models/question.model";
+import {PaginationQuestionModel} from "../../models/pagination-question-model";
+
 
 
 
@@ -8,7 +9,7 @@ import {PaginationQuestionModel} from "../../models/response/pagination-question
 
 export const loadQuestions = createAction(
     '[Question Page] enter',
-    props<{pagination:PaginationQuestionModel}>()
+    props<{questions:QuestionModel[]}>()
 )
 
 export  const  addQuestion= createAction(

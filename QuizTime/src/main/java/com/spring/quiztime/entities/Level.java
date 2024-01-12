@@ -32,7 +32,7 @@ public class Level {
     @Min(value = 0, message = "Min points should be a non-negative number")
     private int minPoints;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "level")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "level",orphanRemoval = true)
     private List<Question> questions;
 
 

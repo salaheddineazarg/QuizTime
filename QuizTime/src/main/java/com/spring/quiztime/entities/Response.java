@@ -22,7 +22,7 @@ public class Response {
     @NotBlank(message = "Text cannot be blank")
     private String text;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "response")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "response",orphanRemoval = true)
     private List<Validation> validations;
 
 }

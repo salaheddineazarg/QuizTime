@@ -1,0 +1,66 @@
+<div class="px-4 py-8"  >
+  <div class="max-w-4xl mx-auto">
+    <div *ngIf="quizzes.length >0"  class="bg-white   grid grid-cols-2 items-center gap-10 rounded-3xl p-6 mb-5">
+
+      <div *ngFor="let quiz of quizzes"
+        class="max-w-sm w-[320px]    h-[470px] px-5 pt-5 pb-1 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
+        <div class=" flex flex-col">
+          <div  class="rounded-2xl   flex justify-center items-center w-[280px] h-[200px]">
+            <h1 class="text-5xl font-black text-white"></h1>
+          </div>
+          <h1 class="mt-4 text-gray-800 text-xl font-bold "></h1>
+          <div class="my-4">
+            <div class="flex space-x-1 items-center">
+              <span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 mb-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>
+              <p></p>
+            </div>
+            <div class="flex space-x-1 items-center">
+              <span><svg class="fill-indigo-600 w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M57,44h-6h-6c-3.3,0-6,2.7-6,6v9c0,1.1,0.5,2.1,1.2,2.8c0.7,0.7,1.7,1.2,2.8,1.2v9c0,3.3,2.7,6,6,6h2h2 c3.3,0,6-2.7,6-6v-9c1.1,0,2.1-0.4,2.8-1.2c0.7-0.7,1.2-1.7,1.2-2.8v-9C63,46.7,60.3,44,57,44z"></path> </g> <g> <circle cx="51" cy="33" r="7"></circle> </g> <g> <path d="M36.6,66.7c-0.2-0.2-0.5-0.4-0.7-0.6c-1.9-2-3-4.5-3-7.1v-9c0-3.2,1.3-6.2,3.4-8.3c0.6-0.6,0.1-1.7-0.7-1.7 c-1.7,0-3.6,0-3.6,0h-6c-3.3,0-6,2.7-6,6v9c0,1.1,0.5,2.1,1.2,2.8c0.7,0.7,1.7,1.2,2.8,1.2v9c0,3.3,2.7,6,6,6h2h2 c0.9,0,1.7-0.2,2.4-0.5c0.4-0.2,0.6-0.5,0.6-0.9c0-1.2,0-4,0-5.1C37,67.2,36.9,66.9,36.6,66.7z"></path> </g> <g> <circle cx="32" cy="29" r="7"></circle> </g> <g> <path d="M76,40h-6c0,0-1.9,0-3.6,0c-0.9,0-1.3,1-0.7,1.7c2.1,2.2,3.4,5.1,3.4,8.3v9c0,2.6-1,5.1-3,7.1 c-0.2,0.2-0.4,0.4-0.7,0.6c-0.2,0.2-0.4,0.5-0.4,0.8c0,1.1,0,3.8,0,5.1c0,0.4,0.2,0.8,0.6,0.9c0.7,0.3,1.5,0.5,2.4,0.5h2h2 c3.3,0,6-2.7,6-6v-9c1.1,0,2.1-0.4,2.8-1.2c0.7-0.7,1.2-1.7,1.2-2.8v-9C82,42.7,79.3,40,76,40z"></path> </g> <g> <circle cx="70" cy="29" r="7"></circle> </g> </g> </g></svg></span>
+              <p> Member</p>
+            </div>
+            <div class="flex space-x-1 items-center">
+              <span><svg class="w-6 h-6 " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 10V7C20 5.89543 19.1046 5 18 5H6C4.89543 5 4 5.89543 4 7V10M20 10V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V10M20 10H4M8 3V7M16 3V7" stroke="#4f46e2" stroke-width="2" stroke-linecap="round"></path> <rect x="6" y="12" width="3" height="3" rx="0.5" fill="#4f46e2"></rect> <rect x="10.5" y="12" width="3" height="3" rx="0.5" fill="#4f46e2"></rect> <rect x="15" y="12" width="3" height="3" rx="0.5" fill="#4f46e2"></rect> </g></svg></span>
+              <p></p>
+            </div>
+            <div class="flex flex-row-reverse justify-between items-center" >
+              <div class="flex items-center justify-end pt-3 w-[90px]">
+                <svg  class="w-[30px] cursor-pointer h-[30px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10 11V17" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M14 11V17" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M4 7H20" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+              </div>
+              <button
+
+                type="button"
+                class="mt-4  text-xl w-[170px] text-white bg-indigo-600 py-2 rounded-xl shadow-lg"
+
+              >
+                More Details
+              </button>
+              <button
+
+                type="button"
+                class="mt-4  text-xl w-[170px] text-white bg-indigo-600 py-2 rounded-xl shadow-lg"
+
+              >
+                In Progresse
+              </button>
+
+              <button
+
+                type="button"
+                class="mt-4 text-xl cursor-not-allowed   w-[170px] text-white bg-indigo-600 py-2 rounded-xl shadow-lg"
+              >
+                Closed
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <div *ngIf="quizzes.length==0"  class="flex bg-white  items-center gap-10 rounded-3xl p-6 mb-5 h-[290px] w-full justify-center ">
+      <h1 class="text-3xl font-semibold text-gray-500">Not Found Any Quiz Yet </h1>
+    </div>
+  </div>
+</div>
+
+

@@ -24,6 +24,6 @@ public class Teacher extends User{
     @NotBlank(message = "Speciality cannot be blank")
     private String speciality;
 
-    @OneToMany(mappedBy = "teacher")
+    @OneToMany(mappedBy = "teacher",orphanRemoval = true)
     private List<Quiz> quizzes;
 }

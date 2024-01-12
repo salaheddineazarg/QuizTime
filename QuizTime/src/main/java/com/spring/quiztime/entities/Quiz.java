@@ -42,12 +42,12 @@ public class Quiz {
     @NotBlank(message = "More Informations cannot be blank")
     private String moreInformations;
 
-    @OneToMany(mappedBy = "quiz")
+    @OneToMany(mappedBy = "quiz",orphanRemoval = true)
     private List<QuizQuestion> quizQuestions;
 
-    @OneToMany(mappedBy = "quiz")
+    @OneToMany(mappedBy = "quiz",orphanRemoval = true)
     private List<AssignQuizStudent> assignQuizStudents;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Teacher teacher;
 }

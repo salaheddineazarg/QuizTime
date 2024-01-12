@@ -1,5 +1,5 @@
 import {createAction, props} from "@ngrx/store";
-import {levelModel} from "../../models/response/level.model";
+import {levelModel} from "../../models/level.model";
 
 
 export  const  addLevel= createAction(

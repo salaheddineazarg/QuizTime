@@ -25,9 +25,9 @@ public class Answer {
     @DecimalMin(value = "0.0", message = "Total score must be a positive number")
     private Double totalScore;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Validation validation;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private AssignQuizStudent assignQuizStudent;
 }

@@ -1,4 +1,5 @@
 package com.spring.quiztime.entities;
+import com.spring.quiztime.enumuration.QuestionType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
@@ -39,16 +40,16 @@ import java.util.List;
     @DecimalMin(value = "0.0", message = "Points must be a positive number")
     private double points;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Level level;
 
-    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY,orphanRemoval = true)
     private List<Media> medias;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Subject subject;
 
-    @OneToMany(mappedBy = "question")
+    @OneToMany(mappedBy = "question",orphanRemoval = true)
     private List<Validation> validations;
 
 }

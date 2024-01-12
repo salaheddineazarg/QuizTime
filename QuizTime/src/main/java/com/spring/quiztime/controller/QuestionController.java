@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/question")
 public class QuestionController {
@@ -25,9 +27,9 @@ public class QuestionController {
         this.questionService = questionService;
     }
     @GetMapping
-    public ResponseEntity<Page<QuestionResponseDTO>> getAll(Pageable pageable){
+    public ResponseEntity<List<QuestionResponseDTO>> getAll(){
 
-        return new ResponseEntity<>(questionService.getAllServicePagination(pageable), HttpStatus.OK);
+        return new ResponseEntity<>(questionService.getAllService(), HttpStatus.OK);
     }
 
     @PostMapping

@@ -91,6 +91,7 @@ public class QuestionService implements IQuestionService {
             }
 
             if(questionDTO.getMedias().size() > 0){
+
                 List<Media> medias = Arrays.asList(modelMapper.map(questionDTO.getMedias(), Media[].class));
                 for(int i=0;i<medias.size();i++){
                     Media media = medias.get(i);
@@ -101,7 +102,6 @@ public class QuestionService implements IQuestionService {
             }
 
             question1 = questionRepository.save(question1);
-            System.out.println(question1.toString());
             return Optional.of(modelMapper.map(question1, QuestionResponseDTO.class));
         }
         return Optional.empty();

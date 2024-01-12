@@ -2,19 +2,14 @@ import {Actions, createEffect, ofType} from "@ngrx/effects";
 import {QuestionService} from "../../services/question-service/question.service";
 import {addQuestion, loadQuestions, removeQuestion} from "./question.actions";
 import {exhaustMap, map, switchMap, tap} from "rxjs";
-import {QuestionModel} from "../../models/response/question.model";
+import {QuestionModel} from "../../models/question.model";
 import {Injectable} from "@angular/core";
-import {PaginationQuestionModel} from "../../models/response/pagination-question-model";
+import {PaginationQuestionModel} from "../../models/pagination-question-model";
 
 
 @Injectable()
 export class QuestionEffects {
 
-      constructor(
-          private action$:Actions,
-          private questionService:QuestionService
-      ) {
-      }
 
 
        loadQuestions$ = createEffect( ()=>
@@ -22,8 +17,7 @@ export class QuestionEffects {
            ofType(loadQuestions),
            exhaustMap(()=> {
             return  this.questionService.getQuestions().pipe(
-               map((pagination:PaginationQuestionModel)=> loadQuestions({pagination}))
-
+               map((questions:QuestionModel[])=> loadQuestions({questions}))
              )
            })
        )
@@ -50,4 +44,11 @@ export class QuestionEffects {
     ), {dispatch:false}
 
     )
+
+  constructor(
+    private action$:Actions,
+    private questionService:QuestionService
+  ) {
+  }
+
 }

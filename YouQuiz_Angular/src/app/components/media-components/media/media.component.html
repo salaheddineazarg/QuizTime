@@ -1,0 +1,6 @@
+<div class="w-[387px]">
+  <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Media</label>
+    <div id="media" class="w-[100%] p-[10px] flex shadow-inner h-[110px] overflow-x-auto">
+     <img *ngFor="let media of medias" (click)="getMedias(media)" [ngClass]="{'border-blue-400':mediasChild.includes(media) }" class="active:border active:border-blue-400 border-r border-gray-200" [src]="media.link" alt="">
+    </div>
+</div>

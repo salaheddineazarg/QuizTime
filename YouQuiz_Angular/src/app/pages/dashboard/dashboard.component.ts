@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
 
 @Component({
   selector: 'app-dashboard',
@@ -8,11 +8,12 @@ import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 })
 export class DashboardComponent implements OnInit{
    dropDown :boolean = true;
-  buttonDisplay="main";
+  buttonDisplay=localStorage.getItem('button') ? localStorage.getItem('button') : "main";
   questionModal=false;
+  subjectModal=false;
+  levelModal=false;
+  quizModal=false;
 
-  constructor(private router:Router) {
-  }
 
 
   dropDownFunction(){
@@ -22,15 +23,38 @@ export class DashboardComponent implements OnInit{
   showQuestionModal(){
     this.questionModal =! this.questionModal;
   }
+  showSubjectModal(){
+    this.subjectModal=!this.subjectModal;
+  }
+
+  showLevelModal(){
+    this.levelModal=!this.levelModal
+  }
+
+  showQuizModal(){
+   this.quizModal =!this.quizModal;
+  }
+
 
 
   handleRouteChange(url: string) {
-    console.log(url)
+
     if (url === '/dashboard/main'){
       this.buttonDisplay = 'main';
     }else if(url === '/dashboard/question'){
       this.buttonDisplay='question'
+    }else if(url === '/dashboard/level') {
+      this.buttonDisplay='level'
+    }else if(url === '/dashboard/subject') {
+      this.buttonDisplay='subject'
+    } else if(url === '/dashboard/response') {
+      this.buttonDisplay='response'
     }
+    localStorage.setItem('button',this.buttonDisplay);
+  }
+
+
+  constructor(private router:Router) {
   }
 
 

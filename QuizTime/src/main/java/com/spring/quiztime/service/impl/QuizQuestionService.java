@@ -3,6 +3,7 @@ package com.spring.quiztime.service.impl;
 import com.spring.quiztime.dto.QuizQuestion.QuizQuestionDTO;
 import com.spring.quiztime.dto.QuizQuestion.QuizQuestionResponseDTO;
 import com.spring.quiztime.dto.Validation.ValidationResponseDTO;
+import com.spring.quiztime.entities.Quiz;
 import com.spring.quiztime.entities.QuizQuestion;
 import com.spring.quiztime.entities.Validation;
 import com.spring.quiztime.exception.ResourceNotFoundException;
@@ -26,15 +27,9 @@ public class QuizQuestionService implements IQuizQuestionService {
 
 
     private final ModelMapper modelMapper;
-
-
     private final QuizQuestionRepository quizQuestionRepository;
-
-
     private final QuestionRepository questionRepository;
-
     private final QuizRepository quizRepository;
-
 
     public QuizQuestionService(ModelMapper modelMapper,
                                QuizQuestionRepository quizQuestionRepository,
@@ -56,6 +51,8 @@ public class QuizQuestionService implements IQuizQuestionService {
         List<QuizQuestion> quizQuestions = new ArrayList<>();
 
         for ( QuizQuestionDTO quizQuestionDTO : quizQuestionDTOList){
+            Quiz quiz = this.quizRepository.findById(quizQuestionDTO.getQuiz_id()).get();
+         
            QuizQuestion  quizQuestion = modelMapper.map(quizQuestionDTO,QuizQuestion.class);
 
 

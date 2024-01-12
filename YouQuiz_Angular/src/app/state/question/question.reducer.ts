@@ -1,29 +1,27 @@
-import { QuestionModel } from "../../models/response/question.model";
+import { QuestionModel } from "../../models/question.model";
 import { createReducer, on } from "@ngrx/store";
 import { addQuestion, loadQuestions, removeQuestion } from "./question.actions";
-import { PaginationQuestionModel } from "../../models/response/pagination-question-model";
+
 
 export interface QuestionState {
   questions: QuestionModel[];
 }
 
-export interface PaginationState {
-  pagination: PaginationQuestionModel | null;
-}
 
 export const initialQuestionState: QuestionState = {
   questions: [],
 };
 
-export const initialPaginationState: PaginationState = {
-  pagination: null,
-};
 
 export const questionReducer = createReducer(
   initialQuestionState,
+  on(loadQuestions, (state, { questions }) => ({
+    ...state,
+    questions: questions,
+  })),
   on(addQuestion, (state, { question }) => ({
     ...state,
-    questions: [...state.questions, question],
+    questions: [...state.questions,question],
   })),
   on(removeQuestion, (state, { id }) => ({
     ...state,
@@ -31,10 +29,3 @@ export const questionReducer = createReducer(
   })),
 );
 
-export const paginationReducer=createReducer(
-  initialPaginationState,
-  on(loadQuestions, (state, { pagination }) => ({
-    ...state,
-    pagination: pagination,
-  }))
-)

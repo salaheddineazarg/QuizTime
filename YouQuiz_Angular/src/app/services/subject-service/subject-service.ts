@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {SubjectModel} from "../../models/response/subject.model";
+import {SubjectModel} from "../../models/subject.model";
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +9,11 @@ import {SubjectModel} from "../../models/response/subject.model";
 export class SubjectService {
 
   constructor(private  http : HttpClient) { }
-  baseUrl:string = "http://localhost:8080/api";
+  baseUrl:string = "http://localhost:8080/api/subject";
 
   getSubjects(){
 
-    return this.http.get<SubjectModel[]>(this.baseUrl+"/subject");
+    return this.http.get<SubjectModel[]>(this.baseUrl);
   }
 
   addSubject(subject:SubjectModel){
