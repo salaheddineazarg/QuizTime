@@ -15,10 +15,6 @@ public class QuizTimeApplication {
 
         SpringApplication.run(QuizTimeApplication.class, args);
 
-
-
-
-
     }
 
 }

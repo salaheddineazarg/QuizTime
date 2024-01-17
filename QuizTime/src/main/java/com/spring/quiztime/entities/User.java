@@ -15,7 +15,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public abstract class User {
 
-
  @Column(nullable = false)
  @NotBlank(message = "First name cannot be blank")
  private String firstName;
@@ -30,4 +29,5 @@ public abstract class User {
  @Column(nullable = false)
  @NotBlank(message = "Address cannot be blank")
  private String address;
+
 }

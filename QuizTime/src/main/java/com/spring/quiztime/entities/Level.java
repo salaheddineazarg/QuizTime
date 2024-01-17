@@ -35,5 +35,6 @@ public class Level {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "level",orphanRemoval = true)
     private List<Question> questions;
 
+  ;
 
 }

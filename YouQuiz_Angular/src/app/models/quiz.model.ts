@@ -9,11 +9,11 @@ export interface QuizModel {
   title: string;
   passingScore: number;
   chances: number;
-  duration: number;
+  during: number;
   displayResult: boolean;
   moreInformations: string;
   quizQuestions?: QuizQuestionModel[];
   assignQuizStudents?: AssignQuizStudentsModel[];
   teacher?: TeacherModel;
-  teacher_id:number;
+  teacher_id?:number;
 }

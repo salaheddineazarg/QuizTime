@@ -32,7 +32,7 @@ public class QuizController {
 
     @PostMapping
     public ResponseEntity<QuizResponseDTO> save(@Valid @RequestBody QuizDTO quizDTO){
-
+        System.out.println("quiz:"+quizDTO);
         return quizService.saveService(quizDTO)
                 .map(quizSaved -> new ResponseEntity<>(quizSaved, HttpStatus.CREATED))
                 .orElse(new ResponseEntity<>(null,HttpStatus.OK));

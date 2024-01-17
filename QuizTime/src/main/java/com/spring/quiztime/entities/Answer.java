@@ -30,4 +30,8 @@ public class Answer {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private AssignQuizStudent assignQuizStudent;
+
+
+
+
 }
