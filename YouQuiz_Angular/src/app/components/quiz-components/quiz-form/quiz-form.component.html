@@ -14,40 +14,40 @@
           <span class="sr-only">Close modal</span>
         </button>
       </div>
-      <form class="p-4 md:p-5" >
+      <form class="p-4 md:p-5" [formGroup]="formQuiz"  >
         <div class="grid gap-4 mb-4  grid-cols-2">
           <div class="col-span-2">
             <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
-            <input  formControlName="text" type="text"  value=""   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required>
+            <input  formControlName="title" type="text"  value=""   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required>
           </div>
           <div class="col-span-2">
             <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Passing Score</label>
-            <input  formControlName="text" type="number" min="0"  value=""   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required>
+            <input  formControlName="passingScore" type="number" min="0"  value=""   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required>
           </div>
           <div class="col-span-2">
             <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chances</label>
-            <input formControlName="" min="0" type="number" value=""   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required>
+            <input formControlName="chances" min="0" type="number" value=""   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required>
           </div>
           <div class="col-span-2">
-            <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">During(sec)</label>
-            <input formControlName="" min="0"  type="number" value=""   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="The duration by second" required>
+            <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">During(min)</label>
+            <input formControlName="during" min="0"  type="number" value=""   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="The duration by minutes" required>
           </div>
           <div class="col-span-2">
             <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-            <input formControlName=""  type="text" value=""   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required>
+            <input formControlName="description"  type="text" value=""   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required>
           </div>
           <div class="col-span-2">
 
             <div class="checkbox-wrapper">
 
-              <input id="_checkbox-26" type="checkbox">
+              <input id="_checkbox-26" formControlName="displayResult" type="checkbox">
               <label for="_checkbox-26">
                 <div class="tick_mark"></div>
               </label>
               <p  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Display result </p>            </div>
           </div>
         </div>
-        <button  type="button"   class="bg-gradient-to-r py-3 from-purple-400 to-blue-500 hover:from-pink-500 hover:to-purple-600 text-white font-semibold w-full text-sm   rounded-md shadow-lg transform transition-all duration-500 ease-in-out hover:scale-110 hover:brightness-110 hover:animate-pulse active:animate-bounce">
+        <button (click)="addQuiz()"  type="button"   class="bg-gradient-to-r py-3 from-purple-400 to-blue-500 hover:from-pink-500 hover:to-purple-600 text-white font-semibold w-full text-sm   rounded-md shadow-lg transform transition-all duration-500 ease-in-out hover:scale-110 hover:brightness-110 hover:animate-pulse active:animate-bounce">
           Add Quiz
         </button>
       </form>

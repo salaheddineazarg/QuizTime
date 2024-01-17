@@ -19,6 +19,7 @@ export class QuizComponent implements OnInit{
 
 
    ngOnInit() {
+    this.generateRandomColor()
     this.store.select(selectAllQuizzes).subscribe(
       quizzes => {
         this.quizzes =quizzes
